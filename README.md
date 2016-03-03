@@ -8,5 +8,7 @@ consider it in beta
 Important:
 
 The n2d project is a demo project
-While /packages is not empty, none of the packages are used
+
+While */packages* is not empty, none of the packages are used
+
 Documentation is coming soon

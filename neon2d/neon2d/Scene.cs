@@ -19,14 +19,8 @@ namespace neon2d
         public Prop[] proplist = new Prop[999999];
         public int propct = 0;
 
-        public String[] stringlist = new String[999999];
-        public int stringct = 0;
-
-        public Font[] fontlist = new Font[999999];
-        public int fontct = 0;
-
-        public Brush[] textbrushlist = new Brush[999999];
-        public int textbrushct = 0;
+        public Text[] textlist = new Text[999999];
+        public int textct = 0;
 
         public Form ownerwindow;
 
@@ -105,32 +99,10 @@ namespace neon2d
             propct++;
         }
 
-        public void renderString(string text, int x, , Font stringfont = null, Brush stringbrush = null)
+        public void renderText(Text stringtext)
         {
-            stringlist[stringct] = text;
-            stringct++;
-            if (stringfont == null)
-            {
-                fontlist[fontct] = SystemFonts.DefaultFont;
-                fontct++;
-            }
-            else
-            {
-                fontlist[fontct] = stringfont;
-                fontct++;
-            }
-
-            if (stringfont == null)
-            {
-                textbrushlist[textbrushct] = Brushes.Black;
-                textbrushct++;
-            }
-            else
-            {
-                textbrushlist[textbrushct] = stringbrush;
-                textbrushct++;
-            }
-
+            textlist[textct] = stringtext;
+            textct++;
         }
 
         public bool readKeyDown(Keys keyToDetect)

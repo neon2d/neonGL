@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace neon2d
 {
-    class Text
+    public class Text
     {
 
         public string textcontent = "";

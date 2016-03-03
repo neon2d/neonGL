@@ -66,9 +66,9 @@ namespace neon2d
                 {
                     g.DrawImage(scene.proplist[i].propsource, new Rectangle(scene.proplist[i].propx, scene.proplist[i].propy, scene.proplist[i].propwidth, scene.proplist[i].propheight));
                 }
-                if(scene.stringlist[i] != null && scene.fontlist[i] != null)
+                if(scene.textlist[i] != null)
                 {
-
+                    g.DrawString(scene.textlist[i].textcontent, scene.textlist[i].stringfont, scene.textlist[i].stringbrush, (float)scene.textlist[i].textx, (float)scene.textlist[i].texty);
                 }
             }
         }

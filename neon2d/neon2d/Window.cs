@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace neon2d
 {
@@ -18,6 +19,7 @@ namespace neon2d
             gamewindow.Width = width;
             gamewindow.Height = height;
             gamewindow.Text = title;
+            gamewindow.BackColor = Color.Black;
 
             if (fullscreen)
             {

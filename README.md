@@ -5,10 +5,12 @@ a simple c# game engine
 
 consider it in beta
 
-Important:
+## Important:
 
 The n2d project is a demo project
 
 While */packages* is not empty, none of the packages are used
 
-Documentation is coming soon
+## Where do I start?
+
+The project wiki is an excellent place to get started! It has very simple tutorials to get you up and running with neon2d in no time!

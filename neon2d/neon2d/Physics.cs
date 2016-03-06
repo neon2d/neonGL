@@ -4,28 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace neon2d.Physics
+namespace neon2d
 {
-
-    public class Rect
+    public class Physics
     {
-        public float x, y;
-        public float width, height;
 
-        public Rect(int x, int y, int width, int height)
+        public class Bodies
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
+            public class Rect
+            {
+
+                public int rectx = 0;
+                public int recty = 0;
+                public int rectwidth = 0;
+                public int rectheight = 0;
+
+                public Rect(int x, int y, int width, int height)
+                {
+                    rectx = x;
+                    recty = y;
+                    rectwidth = width;
+                    rectheight = height;
+                }
+
+            }
         }
 
-        public bool intersects(Rect other)
+        public class World
         {
-            return this.x + this.width > other.x && this.x < other.x + other.width
-                   &&
-                   this.y + this.height > other.y && this.y < other.y + other.height;
+            
+            public bool getRectCollision(Bodies.Rect rect1, Bodies.Rect rect2)
+            {
+                //get rekt
+                if(rect1.rectx + rect1.rectwidth < rect2.rectx || rect2.rectx + rect2.rectwidth < rect1.rectx || rect1.recty + rect1.rectheight < rect2.recty || rect2.recty + rect2.rectheight < rect1.recty)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
         }
+
     }
 }
-

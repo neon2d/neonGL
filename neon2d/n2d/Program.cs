@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-
 using neon2d;
-using neon2d.Physics;
 
 namespace n2d
 {
@@ -38,16 +36,19 @@ namespace n2d
                 imagey--;
             }
 
-            Prop demoimage = new Prop(new Bitmap("demoimage.png"), 10, imagey, 150, 150);
+            Prop demoimage = new Prop(new Bitmap(@"C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\demoimage.png"), 10, imagey, 150, 150);
             myscene.renderProp(demoimage);
 
-            Rect rect1 = new Rect(0, 0, 50, 50);
-            Rect rect2 = new Rect(10, 10, 30, 30);
+            Physics.Bodies.Rect rect1 = new Physics.Bodies.Rect(0, 0, 50, 50);
+            Physics.Bodies.Rect rect2 = new Physics.Bodies.Rect(10, 10, 30, 30);
+
+            Physics.World gameworld = new Physics.World();
             
-            if(rect1.intersects(rect2))
+            if(gameworld.getRectCollision(rect1, rect2))
             {
-                Console.WriteLine("Hooray!");
+                Console.WriteLine("hooray!");
             }
+
         }
 
         public static void checkInput()

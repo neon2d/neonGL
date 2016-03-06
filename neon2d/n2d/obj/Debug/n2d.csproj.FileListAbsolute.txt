@@ -6,3 +6,6 @@ C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\n2d\bin\Debug\neon
 C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\n2d\bin\Debug\neon2d.pdb
 C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\n2d\obj\Debug\n2d.exe
 C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\n2d\obj\Debug\n2d.pdb
+I:\Open Source Projects\neon2d\neon2d\n2d\bin\Debug\n2d.exe.config
+I:\Open Source Projects\neon2d\neon2d\n2d\obj\Debug\n2d.exe
+I:\Open Source Projects\neon2d\neon2d\n2d\obj\Debug\n2d.pdb

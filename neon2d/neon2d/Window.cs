@@ -23,7 +23,8 @@ namespace neon2d
 
             if (fullscreen)
             {
-
+                gamewindow.WindowState = FormWindowState.Maximized;
+                gamewindow.FormBorderStyle = FormBorderStyle.None;
             }
 
             SetDoubleBuffered(gamewindow);

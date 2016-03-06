@@ -45,6 +45,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Networking.cs" />
+    <Compile Include="Physics.cs" />
     <Compile Include="Prop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />

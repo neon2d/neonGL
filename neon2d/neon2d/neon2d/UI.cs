@@ -9,24 +9,73 @@ namespace neon2d
     public class UI
     {
 
-        public class Button
+        public class NUI
         {
+            public class Button
+            {
 
+            }
+
+            public class TextBox
+            {
+
+            }
+
+            public class Label
+            {
+
+            }
+
+            public class ImageBox
+            {
+
+            }
         }
 
-        public class TextBox
+        public class WindowsUI
         {
+            public class Button
+            {
 
+            }
+
+            public class TextBox
+            {
+
+            }
+
+            public class Label
+            {
+
+            }
+
+            public class ImageBox
+            {
+
+            }
         }
 
-        public class Label
+        public class CustomUI
         {
+            public class Button
+            {
 
-        }
+            }
 
-        public class ImageBox
-        {
+            public class TextBox
+            {
 
+            }
+
+            public class Label
+            {
+
+            }
+
+            public class ImageBox
+            {
+
+            }
         }
 
     }

@@ -66,10 +66,29 @@ namespace neon2d
                 {
                     g.DrawImage(scene.proplist[i].propsource, new Rectangle(scene.proplist[i].propx, scene.proplist[i].propy, scene.proplist[i].propwidth, scene.proplist[i].propheight));
                 }
+                if(scene.linelist[i].p != null && scene.linelist[i].line != null)
+                {
+                    g.DrawLine(scene.linelist[i].p, new Point(scene.linelist[i].line.lx1, scene.linelist[i].line.ly1), new Point(scene.linelist[i].line.lx2, scene.linelist[i].line.ly2));
+                }
+                if(scene.rectlist[i].p != null && scene.rectlist[i].rect != null)
+                {
+                    g.DrawRectangle(scene.rectlist[i].p, scene.rectlist[i].rect.rectx, scene.rectlist[i].rect.recty, scene.rectlist[i].rect.rectw, scene.rectlist[i].rect.recth);
+                }
+                if(scene.ellipslist[i].p != null && scene.ellipslist[i].ell != null)
+                {
+                    g.DrawEllipse(scene.ellipslist[i].p, scene.ellipslist[i].ell.ellipsx, scene.ellipslist[i].ell.ellipsy, scene.ellipslist[i].ell.ellipsw, scene.ellipslist[i].ell.ellipsh);
+                }
+                if(scene.trilist[i].p != null && scene.trilist[i].tri != null)
+                {
+                    g.DrawLine(scene.trilist[i].p, new Point(scene.trilist[i].tri.trix, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih), new Point(scene.trilist[i].tri.trix + (int)(scene.trilist[i].tri.triw / 2), scene.trilist[i].tri.triy));
+                    g.DrawLine(scene.trilist[i].p, new Point(scene.trilist[i].tri.trix + (int)(scene.trilist[i].tri.triw / 2), scene.trilist[i].tri.triy), new Point(scene.trilist[i].tri.trix + scene.trilist[i].tri.triw, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih));
+                    g.DrawLine(scene.trilist[i].p, new Point(scene.trilist[i].tri.trix, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih), new Point(scene.trilist[i].tri.trix + scene.trilist[i].tri.triw, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih));
+                }
                 if(scene.textlist[i] != null)
                 {
                     g.DrawString(scene.textlist[i].textcontent, scene.textlist[i].stringfont, scene.textlist[i].stringbrush, (float)scene.textlist[i].textx, (float)scene.textlist[i].texty);
                 }
+                //ui rendering happens down here
             }
         }
 

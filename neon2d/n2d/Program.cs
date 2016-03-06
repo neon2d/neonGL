@@ -37,17 +37,29 @@ namespace n2d
             }
 
             Prop demoimage = new Prop(new Bitmap(@"C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\demoimage.png"), 10, imagey, 150, 150);
-            myscene.renderProp(demoimage);
+            //myscene.renderProp(demoimage);
 
             Physics.Bodies.Rect rect1 = new Physics.Bodies.Rect(0, 0, 50, 50);
             Physics.Bodies.Rect rect2 = new Physics.Bodies.Rect(10, 10, 30, 30);
 
             Physics.World gameworld = new Physics.World();
+
             
-            if(gameworld.getRectCollision(rect1, rect2))
-            {
-                Console.WriteLine("hooray!");
-            }
+            Shape.Triangle tri = new Shape.Triangle(100, 100, 50, 50);
+            Shape.Rectangle rect = new Shape.Rectangle(300, 300, 45, 80);
+            Shape.Ellipse ell = new Shape.Ellipse(50, 50, 30, 50);
+            Shape.Line li = new Shape.Line(600, 400, 650, 350);
+
+            myscene.renderTriangle(tri, 2, Brushes.Blue);
+            myscene.renderRectangle(rect, 1, Brushes.Green);
+            myscene.renderEllipse(ell, 3, Brushes.Red);
+            myscene.renderLine(li, 4, Brushes.Yellow);
+
+            int mx = myscene.getMouseX();
+            int my = myscene.getMouseY();
+
+            myscene.renderText(new Text(mx.ToString(), 0, 0, Brushes.White));
+            myscene.renderText(new Text(my.ToString(), 0, 15, Brushes.White));
 
         }
 

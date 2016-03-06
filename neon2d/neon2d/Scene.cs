@@ -22,6 +22,18 @@ namespace neon2d
         public Text[] textlist = new Text[999999];
         public int textct = 0;
 
+        public linestruct[] linelist = new linestruct[999999];
+        public int linect = 0;
+
+        public rectstruct[] rectlist = new rectstruct[999999];
+        public int rectct = 0;
+
+        public ellipsstruct[] ellipslist = new ellipsstruct[999999];
+        public int ellipsct = 0;
+
+        public tristruct[] trilist = new tristruct[999999];
+        public int trict = 0;
+
         public Form ownerwindow;
 
         public Keys downkey;
@@ -105,6 +117,129 @@ namespace neon2d
             textct++;
         }
 
+        //shape stuff goes here
+        //starting with some special structs to hold them in the arrays
+        //DEVS DON'T NEED TO USE THESE STRUCTS! THEY ARE MERELY USED AS THE DATATYPE FOR THE ARRAYS
+        //SO WE CAN HOLD LINES, BRUSHES, AND INT WIDTHS IN THE SAME ARRAY.
+
+        public struct linestruct
+        {
+
+            public Shape.Line line;
+            public Pen p;
+
+            public linestruct(Shape.Line l, Pen c)
+            {
+                line = l;
+                p = c;
+            }
+        }
+
+        public struct rectstruct
+        {
+
+            public Shape.Rectangle rect;
+            public Pen p;
+
+            public rectstruct(Shape.Rectangle r, Pen c)
+            {
+                rect = r;
+                p = c;
+            }
+        }
+
+        public struct ellipsstruct
+        {
+
+            public Shape.Ellipse ell;
+            public Pen p;
+
+            public ellipsstruct(Shape.Ellipse e, Pen c)
+            {
+                ell = e;
+                p = c;
+            }
+        }
+
+        public struct tristruct
+        {
+
+            public Shape.Triangle tri;
+            public Pen p;
+
+            public tristruct(Shape.Triangle t, Pen c)
+            {
+                tri = t;
+                p = c;
+            }
+        }
+
+        //THE ACTUAL SHAPE RENDERING IS HERE
+        
+        public void renderLine(Shape.Line line, int thickness = 1, Brush color = null)
+        {
+            Pen pcolor;
+            if(color == null)
+            {
+                pcolor = new Pen(Brushes.Black, thickness);
+            }
+            else
+            {
+                pcolor = new Pen(color, thickness);
+            }
+            linestruct ls = new linestruct(line, pcolor);
+            linelist[linect] = ls;
+            linect++;
+        }
+
+        public void renderRectangle(Shape.Rectangle rect, int thickness = 1, Brush color = null)
+        {
+            Pen pcolor;
+            if (color == null)
+            {
+                pcolor = new Pen(Brushes.Black, thickness);
+            }
+            else
+            {
+                pcolor = new Pen(color, thickness);
+            }
+            rectstruct rs = new rectstruct(rect, pcolor);
+            rectlist[rectct] = rs;
+            rectct++;
+        }
+
+        public void renderEllipse(Shape.Ellipse ellipse, int thickness = 1, Brush color = null)
+        {
+            Pen pcolor;
+            if (color == null)
+            {
+                pcolor = new Pen(Brushes.Black, thickness);
+            }
+            else
+            {
+                pcolor = new Pen(color, thickness);
+            }
+            ellipsstruct es = new ellipsstruct(ellipse, pcolor);
+            ellipslist[ellipsct] = es;
+            ellipsct++;
+        }
+
+        public void renderTriangle(Shape.Triangle triangle, int thickness = 1, Brush color = null)
+        {
+            Pen pcolor;
+            if (color == null)
+            {
+                pcolor = new Pen(Brushes.Black, thickness);
+            }
+            else
+            {
+                pcolor = new Pen(color, thickness);
+            }
+            tristruct ts = new tristruct(triangle, pcolor);
+            trilist[trict] = ts;
+            trict++;
+        }
+
         public bool readKeyDown(Keys keyToDetect)
         {
             if(downkey == keyToDetect)
@@ -129,9 +264,18 @@ namespace neon2d
             {
                 spritelist[i] = null;
                 proplist[i] = null;
+                textlist[i] = null;
+                linelist[i] = new linestruct(null, null);
+                rectlist[i] = new rectstruct(null, null);
+                ellipslist[i] = new ellipsstruct(null, null);
+                trilist[i] = new tristruct(null, null);
             }
             spritect = 0;
             propct = 0;
+            linect = 0;
+            rectct = 0;
+            ellipsct = 0;
+            trict = 0;
         }
 
         public void playSound(Sound gamesound, bool loop = false)

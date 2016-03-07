@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using neon2d;
+using neon2d.Physics;
 
 namespace n2d
 {
@@ -37,14 +38,16 @@ namespace n2d
             }
 
             string imagepath = Environment.CurrentDirectory + @"\demoimage.png"; //this is /bin/Debug/ btw
-            neon2d.Message.log(imagepath);
             Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey, 150, 150);
             myscene.renderProp(demoimage);
 
-            Physics.Bodies.Rect rect1 = new Physics.Bodies.Rect(0, 0, 50, 50);
-            Physics.Bodies.Rect rect2 = new Physics.Bodies.Rect(10, 10, 30, 30);
+            Rect rect1 = new Rect(0, 0, 60, 60);
+            Rect rect2 = new Rect(10, 10, 40, 40);
 
-            Physics.World gameworld = new Physics.World();
+            if(rect1.intersects(rect2))
+            {
+                Console.WriteLine("intersecting!");
+            }
 
             
             Shape.Triangle tri = new Shape.Triangle(100, 100, 50, 50);

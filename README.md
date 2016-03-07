@@ -1,9 +1,8 @@
 # neon2d
 a simple c# game engine
 
-**_repository was accidentally deleted a short while ago we're back now_**
-
-consider it in beta
+## Building neon through AppVeyor
+The latest commit of neon2d is built through AppVeyor at https://ci.appveyor.com/project/matthewd673/neon2d. This is our primary method for finding problems after building (errors with other environments).
 
 ## Important:
 

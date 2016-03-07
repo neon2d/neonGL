@@ -36,8 +36,10 @@ namespace n2d
                 imagey--;
             }
 
-            Prop demoimage = new Prop(new Bitmap(@"C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\demoimage.png"), 10, imagey, 150, 150);
-            //myscene.renderProp(demoimage);
+            string imagepath = Environment.CurrentDirectory + @"\demoimage.png"; //this is /bin/Debug/ btw
+            neon2d.Message.log(imagepath);
+            Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey, 150, 150);
+            myscene.renderProp(demoimage);
 
             Physics.Bodies.Rect rect1 = new Physics.Bodies.Rect(0, 0, 50, 50);
             Physics.Bodies.Rect rect2 = new Physics.Bodies.Rect(10, 10, 30, 30);

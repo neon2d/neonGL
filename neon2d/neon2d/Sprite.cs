@@ -10,80 +10,91 @@ namespace neon2d
     public class Sprite
     {
 
-        public Bitmap[] spriteframes = new Bitmap[9999];
-        public Bitmap currentframe;
-        int spritect = 0;
-        int currentframeid = 0;
-        public int spritex;
-        public int spritey;
-        public int spritewidth;
-        public int spriteheight;
+        public Bitmap[] spriteFrames = new Bitmap[9999];
+        public Bitmap currentFrame;
+        int spriteCt = 0;
+        int currentFrameId = 0;
+        public int spriteX;
+        public int spriteY;
+        public int spriteWidth;
+        public int spriteHeight;
         
-        public Sprite(Bitmap[] frames, int x, int y, int width = -1, int height = -1)
+        public Sprite(Bitmap[] Frames, int x, int y, int width = -1, int height = -1)
         {
-            spriteframes = frames;
-            currentframe = spriteframes[0];
-            spritect = spriteframes.Length - 1;
-            spritex = x;
-            spritey = y;
+            spriteFrames = Frames;
+            currentFrame = spriteFrames[0];
+            spriteCt = spriteFrames.Length - 1;
+            spriteX = x;
+            spriteY = y;
             if(width == -1)
             {
-                spritewidth = spriteframes[0].Width;
+                spriteWidth = spriteFrames[0].Width;
             }
             else
             {
-                spritewidth = width;
+                spriteWidth = width;
             }
             if(height == -1)
             {
-                spriteheight = spriteframes[0].Height;
+                spriteHeight = spriteFrames[0].Height;
             }
             else
             {
-                spriteheight = height;
+                spriteHeight = height;
             }
+        }
+
+        public Sprite(Bitmap[] frames, Physics.Rect dimensions)
+        {
+            spriteFrames = frames;
+            currentFrame = spriteFrames[0];
+            spriteCt = spriteFrames.Length - 1;
+            spriteX = (int) dimensions.x;
+            spriteY = (int) dimensions.y;
+            spriteWidth = (int) dimensions.width;
+            spriteHeight = (int) dimensions.height;
         }
 
         public void stepForward(int increment = 1)
         {
-            if(currentframeid + increment > spritect)
+            if(currentFrameId + increment > spriteCt)
             {
-                Message.neonError("Frame outside of animation bounds [" + Convert.ToString(currentframeid + increment) + " > " + Convert.ToString(spritect) + "]");
+                Message.neonError("Frame outside of animation bounds [" + Convert.ToString(currentFrameId + increment) + " > " + Convert.ToString(spriteCt) + "]");
             }
             else
             {
-                currentframeid += increment;
-                currentframe = spriteframes[currentframeid];
+                currentFrameId += increment;
+                currentFrame = spriteFrames[currentFrameId];
             }
         }
 
         public void stepBack(int increment = 1)
         {
-            if(currentframeid - increment < 0)
+            if(currentFrameId - increment < 0)
             {
-                Message.neonError("Frame outside of animation bounds [" + Convert.ToString(currentframeid - increment) + " < 0]");
+                Message.neonError("Frame outside of animation bounds [" + Convert.ToString(currentFrameId - increment) + " < 0]");
             }
             else
             {
-                currentframeid -= increment;
-                currentframe = spriteframes[currentframeid];
+                currentFrameId -= increment;
+                currentFrame = spriteFrames[currentFrameId];
             }
         }
 
         public void stepTo(int framenum)
         {
-            if(framenum > spritect)
+            if(framenum > spriteCt)
             {
-                Message.neonError("Frame outside of animation bounds [" + Convert.ToString(framenum) + " > " + Convert.ToString(spritect) + "]");
+                Message.neonError("Frame outside of animation bounds [" + Convert.ToString(framenum) + " > " + Convert.ToString(spriteCt) + "]");
             }
-            else if(framenum < spritect)
+            else if(framenum < spriteCt)
             {
                 Message.neonError("Frame outside of animation bounds [" + Convert.ToString(framenum) + " < 0]");
             }
             else
             {
-                currentframeid = framenum;
-                currentframe = spriteframes[currentframeid];
+                currentFrameId = framenum;
+                currentFrame = spriteFrames[currentFrameId];
             }
         }
 

@@ -10,33 +10,42 @@ namespace neon2d
     public class Prop
     {
 
-        public Bitmap propsource;
-        public int propx;
-        public int propy;
-        public int propwidth;
-        public int propheight;
+        public Bitmap propSource;
+        public int propX;
+        public int propY;
+        public int propWidth;
+        public int propHeight;
 
         public Prop(Bitmap image, int x, int y, int width = -1, int height = -1)
         {
-            propsource = image;
-            propx = x;
-            propy = y;
+            propSource = image;
+            propX = x;
+            propY = y;
             if (width == -1)
             {
-                propwidth = propsource.Width;
+                propX = propSource.Width;
             }
             else
             {
-                propwidth = width;
+                propWidth = width;
             }
             if (height == -1)
             {
-                propheight = propsource.Height;
+                propHeight = propSource.Height;
             }
             else
             {
-                propheight = height;
+                propHeight = height;
             }
+        }
+
+        public Prop(Bitmap image, Physics.Rect dimensions)
+        {
+            propSource = image;
+            propX = (int) dimensions.x;
+            propY = (int) dimensions.y;
+            propWidth = (int) dimensions.width;
+            propHeight = (int) dimensions.height;
         }
 
     }

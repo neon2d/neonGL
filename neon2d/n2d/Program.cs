@@ -45,7 +45,7 @@ namespace n2d
                 imagey--;
             }
 
-            string imagepath = Environment.CurrentDirectory + @"\logo.png"; //this is /bin/Debug/ btw
+            string imagepath = Environment.CurrentDirectory + @"\..\..\res\demoimage.png"; //this is /bin/Debug/ btw
             Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey, 150, 150);
             myscene.render(demoimage);
 

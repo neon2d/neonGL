@@ -20,6 +20,8 @@ namespace n2d
         public static bool movingup = false;
         public static int imagey = 10;
 
+        public static Vector2i vector = new Vector2i(10, 20);
+
         public static void Main(string[] args)
         {
             mywindow = new Window(800, 600, "my awesome window");
@@ -29,12 +31,9 @@ namespace n2d
             onStart();
             maingame.runGame();
         }
-        private static Text vectorRender;
         public static void onStart()
         {
-            Vector2i vector = new Vector2i(10, 20);
             Console.WriteLine(vector + new Vector2i(20, 30));
-            vectorRender = new Text("Vector result: " + vector.ToString(), 200, 100, Brushes.White);
         }
 
         public static void updateVoid()
@@ -46,7 +45,7 @@ namespace n2d
                 imagey--;
             }
 
-            string imagepath = Environment.CurrentDirectory + @"\demoimage.png"; //this is /bin/Debug/ btw
+            string imagepath = Environment.CurrentDirectory + @"\logo.png"; //this is /bin/Debug/ btw
             Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey, 150, 150);
             myscene.render(demoimage);
 
@@ -71,9 +70,9 @@ namespace n2d
             int mx = myscene.getMouseX();
             int my = myscene.getMouseY();
 
-            myscene.render(new Text(mx.ToString(), 0, 0, Brushes.White));
-            myscene.render(new Text(my.ToString(), 0, 15, Brushes.White));
-            myscene.render(vectorRender);
+            myscene.render(mx.ToString(), 0, 0);
+            myscene.render(my.ToString(), 0, 10);
+            myscene.render("Vector result: " + vector.ToString(), 200, 100);
         }
 
         public static void checkInput()

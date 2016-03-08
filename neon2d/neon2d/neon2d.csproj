@@ -53,7 +53,6 @@
     <Compile Include="Shape.cs" />
     <Compile Include="Sound.cs" />
     <Compile Include="Sprite.cs" />
-    <Compile Include="Text.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Vector2.cs" />

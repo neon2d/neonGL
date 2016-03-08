@@ -93,9 +93,47 @@ namespace neon2d
             renderct++;
         }
 
-        public void render(Text stringtext)
+        public struct TextStruct
         {
-            renderlist[renderct] = stringtext;
+            public string stringtext;
+            public int _x;
+            public int _y;
+            public Brush stringcolor;
+            public Font stringfont;
+
+            public TextStruct(string text, int x, int y, Brush textcolor, Font textfont)
+            {
+                stringtext = text;
+                _x = x;
+                _y = y;
+                stringcolor = textcolor;
+                stringfont = textfont;
+            }
+
+        }
+
+        public void render(string text, int x, int y, Brush textcolor = null, Font textfont = null)
+        {
+            Brush tempcolor;
+            Font tempfont;
+            if (textcolor == null)
+            {
+                tempcolor = Brushes.White;
+            }
+            else
+            {
+                tempcolor = textcolor;
+            }
+
+            if (textfont == null)
+            {
+                tempfont = SystemFonts.DialogFont;
+            }
+            else
+            {
+                tempfont = textfont;
+            }
+            renderlist[renderct] = new TextStruct(text, x, y, tempcolor, tempfont);
             renderct++;
         }
 
@@ -104,52 +142,52 @@ namespace neon2d
         //DEVS DON'T NEED TO USE THESE STRUCTS! THEY ARE MERELY USED AS THE DATATYPE FOR THE ARRAYS
         //SO WE CAN HOLD LINES, BRUSHES, AND INT WIDTHS IN THE SAME ARRAY.
 
-        public struct linestruct
+        public struct LineStruct
         {
 
             public Shape.Line line;
             public Pen p;
 
-            public linestruct(Shape.Line l, Pen c)
+            public LineStruct(Shape.Line l, Pen c)
             {
                 line = l;
                 p = c;
             }
         }
 
-        public struct rectstruct
+        public struct RectStruct
         {
 
             public Shape.Rectangle rect;
             public Pen p;
 
-            public rectstruct(Shape.Rectangle r, Pen c)
+            public RectStruct(Shape.Rectangle r, Pen c)
             {
                 rect = r;
                 p = c;
             }
         }
 
-        public struct ellipsstruct
+        public struct EllipsStruct
         {
 
             public Shape.Ellipse ell;
             public Pen p;
 
-            public ellipsstruct(Shape.Ellipse e, Pen c)
+            public EllipsStruct(Shape.Ellipse e, Pen c)
             {
                 ell = e;
                 p = c;
             }
         }
 
-        public struct tristruct
+        public struct TriStruct
         {
 
             public Shape.Triangle tri;
             public Pen p;
 
-            public tristruct(Shape.Triangle t, Pen c)
+            public TriStruct(Shape.Triangle t, Pen c)
             {
                 tri = t;
                 p = c;
@@ -169,7 +207,7 @@ namespace neon2d
             {
                 pcolor = new Pen(color, thickness);
             }
-            linestruct ls = new linestruct(line, pcolor);
+            LineStruct ls = new LineStruct(line, pcolor);
             renderlist[renderct] = ls;
             renderct++;
         }
@@ -185,7 +223,7 @@ namespace neon2d
             {
                 pcolor = new Pen(color, thickness);
             }
-            rectstruct rs = new rectstruct(rect, pcolor);
+            RectStruct rs = new RectStruct(rect, pcolor);
             renderlist[renderct] = rs;
             renderct++;
         }
@@ -201,7 +239,7 @@ namespace neon2d
             {
                 pcolor = new Pen(color, thickness);
             }
-            ellipsstruct es = new ellipsstruct(ellipse, pcolor);
+            EllipsStruct es = new EllipsStruct(ellipse, pcolor);
             renderlist[renderct] = es;
             renderct++;
         }
@@ -217,7 +255,7 @@ namespace neon2d
             {
                 pcolor = new Pen(color, thickness);
             }
-            tristruct ts = new tristruct(triangle, pcolor);
+            TriStruct ts = new TriStruct(triangle, pcolor);
             renderlist[renderct] = ts;
             renderct++;
         }

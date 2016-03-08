@@ -29,14 +29,6 @@ namespace neon2d
         public bool threadRunning = false;
         public bool shouldRender = false;
 
-        Sprite spritetype;
-        Prop proptype;
-        Text texttype;
-        Scene.linestruct linetype;
-        Scene.rectstruct recttype;
-        Scene.ellipsstruct ellipstype;
-        Scene.tristruct tritype;
-
         public Game(Window mainwindow, Scene mainscene, Action onUpdate, int framerate = 30)
         {
             window = mainwindow;
@@ -83,39 +75,39 @@ namespace neon2d
 
                         g.DrawImage(placeholder.propsource, new Rectangle(placeholder.propx, placeholder.propy, placeholder.propwidth, placeholder.propheight));
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Text))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.TextStruct))
                     {
                         //its text
-                        Text placeholder = (Text)scene.renderlist[i];
+                        Scene.TextStruct placeholder = (Scene.TextStruct)scene.renderlist[i];
 
-                        g.DrawString(placeholder.textcontent, placeholder.stringfont, placeholder.stringbrush, (float)placeholder.textx, (float)placeholder.texty);
+                        g.DrawString(placeholder.stringtext, placeholder.stringfont, placeholder.stringcolor, placeholder._x, placeholder._y);
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Scene.linestruct))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.LineStruct))
                     {
                         //its a line
-                        Scene.linestruct placeholder = (Scene.linestruct)scene.renderlist[i];
+                        Scene.LineStruct placeholder = (Scene.LineStruct)scene.renderlist[i];
 
                         g.DrawLine(placeholder.p, new Point(placeholder.line.lx1, placeholder.line.ly1), new Point(placeholder.line.lx2, placeholder.line.ly2));
 
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Scene.rectstruct))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.RectStruct))
                     {
                         //its a rect
-                        Scene.rectstruct placeholder = (Scene.rectstruct)scene.renderlist[i];
+                        Scene.RectStruct placeholder = (Scene.RectStruct)scene.renderlist[i];
 
                         g.DrawRectangle(placeholder.p, placeholder.rect.rectx, placeholder.rect.recty, placeholder.rect.rectw, placeholder.rect.recth);
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Scene.ellipsstruct))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.EllipsStruct))
                     {
                         //its an ellipse
-                        Scene.ellipsstruct placeholder = (Scene.ellipsstruct)scene.renderlist[i];
+                        Scene.EllipsStruct placeholder = (Scene.EllipsStruct)scene.renderlist[i];
 
                         g.DrawEllipse(placeholder.p, placeholder.ell.ellipsx, placeholder.ell.ellipsy, placeholder.ell.ellipsw, placeholder.ell.ellipsh);
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Scene.tristruct))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.TriStruct))
                     {
                         //its a triangle
-                        Scene.tristruct placeholder = (Scene.tristruct)scene.renderlist[i];
+                        Scene.TriStruct placeholder = (Scene.TriStruct)scene.renderlist[i];
 
                         g.DrawLine(placeholder.p, new Point(placeholder.tri.trix, placeholder.tri.triy + placeholder.tri.trih), new Point(placeholder.tri.trix + (int)(placeholder.tri.triw / 2), placeholder.tri.triy));
                         g.DrawLine(placeholder.p, new Point(placeholder.tri.trix + (int)(placeholder.tri.triw / 2), placeholder.tri.triy), new Point(placeholder.tri.trix + placeholder.tri.triw, placeholder.tri.triy + placeholder.tri.trih));

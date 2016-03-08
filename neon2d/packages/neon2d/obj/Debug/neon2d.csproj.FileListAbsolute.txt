@@ -1,5 +1,0 @@
-C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\bin\Debug\neon2d.dll
-C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\bin\Debug\neon2d.pdb
-C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\obj\Debug\neon2d.csprojResolveAssemblyReference.cache
-C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\obj\Debug\neon2d.dll
-C:\Users\Matthew\Documents\Visual Studio 2015\Projects\neon2d\neon2d\obj\Debug\neon2d.pdb

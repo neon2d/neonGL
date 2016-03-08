@@ -11,6 +11,7 @@
     <AssemblyName>neon2d</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,7 @@
     <Compile Include="Text.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="UserData.cs" />
+    <Compile Include="Vector2.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
   <ItemGroup>

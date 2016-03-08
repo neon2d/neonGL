@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+
 using neon2d;
 using neon2d.Physics;
+using neon2d.Math;
 
 namespace n2d
 {
     class Program
     {
-
         public static Window mywindow;
         public static Scene myscene;
 
@@ -25,7 +26,15 @@ namespace n2d
             myscene = new Scene(mywindow);
 
             Game maingame = new Game(mywindow, myscene, new Action(updateVoid));
+            onStart();
             maingame.runGame();
+        }
+        private static Text vectorRender;
+        public static void onStart()
+        {
+            Vector2i vector = new Vector2i(10, 20);
+            Console.WriteLine(vector + new Vector2i(20, 30));
+            vectorRender = new Text("Vector result: " + vector.ToString(), 200, 100, Brushes.White);
         }
 
         public static void updateVoid()
@@ -49,7 +58,6 @@ namespace n2d
                 Console.WriteLine("intersecting!");
             }
 
-            
             Shape.Triangle tri = new Shape.Triangle(100, 100, 50, 50);
             Shape.Rectangle rect = new Shape.Rectangle(300, 300, 45, 80);
             Shape.Ellipse ell = new Shape.Ellipse(50, 50, 30, 50);
@@ -65,7 +73,7 @@ namespace n2d
 
             myscene.render(new Text(mx.ToString(), 0, 0, Brushes.White));
             myscene.render(new Text(my.ToString(), 0, 15, Brushes.White));
-
+            myscene.render(vectorRender);
         }
 
         public static void checkInput()

@@ -13,26 +13,8 @@ namespace neon2d
     public class Scene
     {
 
-        public Sprite[] spritelist = new Sprite[999999];
-        public int spritect = 0;
-
-        public Prop[] proplist = new Prop[999999];
-        public int propct = 0;
-
-        public Text[] textlist = new Text[999999];
-        public int textct = 0;
-
-        public linestruct[] linelist = new linestruct[999999];
-        public int linect = 0;
-
-        public rectstruct[] rectlist = new rectstruct[999999];
-        public int rectct = 0;
-
-        public ellipsstruct[] ellipslist = new ellipsstruct[999999];
-        public int ellipsct = 0;
-
-        public tristruct[] trilist = new tristruct[999999];
-        public int trict = 0;
+        public Object[] renderlist = new Object[999999];
+        public int renderct = 0;
 
         public Form ownerwindow;
 
@@ -101,20 +83,20 @@ namespace neon2d
 
         public void render(Sprite render)
         {
-            spritelist[spritect] = render;
-            spritect++;
+            renderlist[renderct] = render;
+            renderct++;
         }
 
         public void render(Prop render)
         {
-            proplist[propct] = render;
-            propct++;
+            renderlist[renderct] = render;
+            renderct++;
         }
 
         public void render(Text stringtext)
         {
-            textlist[textct] = stringtext;
-            textct++;
+            renderlist[renderct] = stringtext;
+            renderct++;
         }
 
         //shape stuff goes here
@@ -188,8 +170,8 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             linestruct ls = new linestruct(line, pcolor);
-            linelist[linect] = ls;
-            linect++;
+            renderlist[renderct] = ls;
+            renderct++;
         }
 
         public void render(Shape.Rectangle rect, int thickness = 1, Brush color = null)
@@ -204,8 +186,8 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             rectstruct rs = new rectstruct(rect, pcolor);
-            rectlist[rectct] = rs;
-            rectct++;
+            renderlist[renderct] = rs;
+            renderct++;
         }
 
         public void render(Shape.Ellipse ellipse, int thickness = 1, Brush color = null)
@@ -220,8 +202,8 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             ellipsstruct es = new ellipsstruct(ellipse, pcolor);
-            ellipslist[ellipsct] = es;
-            ellipsct++;
+            renderlist[renderct] = es;
+            renderct++;
         }
 
         public void render(Shape.Triangle triangle, int thickness = 1, Brush color = null)
@@ -236,8 +218,8 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             tristruct ts = new tristruct(triangle, pcolor);
-            trilist[trict] = ts;
-            trict++;
+            renderlist[renderct] = ts;
+            renderct++;
         }
 
         public bool readKeyDown(Keys keyToDetect)
@@ -262,20 +244,9 @@ namespace neon2d
         {
             for(int i = 0; i <= 999998; i++)
             {
-                spritelist[i] = null;
-                proplist[i] = null;
-                textlist[i] = null;
-                linelist[i] = new linestruct(null, null);
-                rectlist[i] = new rectstruct(null, null);
-                ellipslist[i] = new ellipsstruct(null, null);
-                trilist[i] = new tristruct(null, null);
+                renderlist[i] = null;
             }
-            spritect = 0;
-            propct = 0;
-            linect = 0;
-            rectct = 0;
-            ellipsct = 0;
-            trict = 0;
+            renderct = 0;
         }
 
         public void playSound(Sound gamesound, bool loop = false)

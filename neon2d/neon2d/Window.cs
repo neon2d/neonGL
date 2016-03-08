@@ -10,7 +10,6 @@ namespace neon2d
 {
     public class Window
     {
-
         public Form gamewindow;
 
         public Window(int width, int height, string title, bool fullscreen = false)

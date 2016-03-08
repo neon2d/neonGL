@@ -49,10 +49,10 @@ namespace neon2d
             spriteFrames = frames;
             currentFrame = spriteFrames[0];
             spriteCt = spriteFrames.Length - 1;
-            spriteX = (int) dimensions.x;
-            spriteY = (int) dimensions.y;
-            spriteWidth = (int) dimensions.width;
-            spriteHeight = (int) dimensions.height;
+            spriteX = (int)dimensions.x;
+            spriteY = (int)dimensions.y;
+            spriteWidth = (int)dimensions.width;
+            spriteHeight = (int)dimensions.height;
         }
 
         public void stepForward(int increment = 1)

@@ -87,7 +87,7 @@ namespace neon2d
                         //its a line
                         Scene.LineStruct placeholder = (Scene.LineStruct)scene.renderlist[i];
 
-                        g.DrawLine(placeholder.p, new Point(placeholder.line.lx1, placeholder.line.ly1), new Point(placeholder.line.lx2, placeholder.line.ly2));
+                        g.DrawLine(placeholder.p, new Point(placeholder.line.lX1, placeholder.line.lY1), new Point(placeholder.line.lX2, placeholder.line.lY2));
 
                     }
                     else if(scene.renderlist[i].GetType() == typeof(Scene.RectStruct))
@@ -95,23 +95,23 @@ namespace neon2d
                         //its a rect
                         Scene.RectStruct placeholder = (Scene.RectStruct)scene.renderlist[i];
 
-                        g.DrawRectangle(placeholder.p, placeholder.rect.rectx, placeholder.rect.recty, placeholder.rect.rectw, placeholder.rect.recth);
+                        g.DrawRectangle(placeholder.p, placeholder.rect.rectX, placeholder.rect.rectY, placeholder.rect.rectWidth, placeholder.rect.rectHeight);
                     }
                     else if(scene.renderlist[i].GetType() == typeof(Scene.EllipsStruct))
                     {
                         //its an ellipse
                         Scene.EllipsStruct placeholder = (Scene.EllipsStruct)scene.renderlist[i];
 
-                        g.DrawEllipse(placeholder.p, placeholder.ell.ellipsx, placeholder.ell.ellipsy, placeholder.ell.ellipsw, placeholder.ell.ellipsh);
+                        g.DrawEllipse(placeholder.p, placeholder.ell.ellipsX, placeholder.ell.ellipsY, placeholder.ell.ellipsWidth, placeholder.ell.ellipsHeight);
                     }
                     else if(scene.renderlist[i].GetType() == typeof(Scene.TriStruct))
                     {
                         //its a triangle
                         Scene.TriStruct placeholder = (Scene.TriStruct)scene.renderlist[i];
 
-                        g.DrawLine(placeholder.p, new Point(placeholder.tri.trix, placeholder.tri.triy + placeholder.tri.trih), new Point(placeholder.tri.trix + (int)(placeholder.tri.triw / 2), placeholder.tri.triy));
-                        g.DrawLine(placeholder.p, new Point(placeholder.tri.trix + (int)(placeholder.tri.triw / 2), placeholder.tri.triy), new Point(placeholder.tri.trix + placeholder.tri.triw, placeholder.tri.triy + placeholder.tri.trih));
-                        g.DrawLine(placeholder.p, new Point(placeholder.tri.trix, placeholder.tri.triy + placeholder.tri.trih), new Point(placeholder.tri.trix + placeholder.tri.triw, placeholder.tri.triy + placeholder.tri.trih));
+                        g.DrawLine(placeholder.p, new Point(placeholder.tri.triX, placeholder.tri.triY + placeholder.tri.triHeight), new Point(placeholder.tri.triX + (int)(placeholder.tri.triWidth / 2), placeholder.tri.triY));
+                        g.DrawLine(placeholder.p, new Point(placeholder.tri.triX + (int)(placeholder.tri.triWidth / 2), placeholder.tri.triY), new Point(placeholder.tri.triX + placeholder.tri.triWidth, placeholder.tri.triY + placeholder.tri.triHeight));
+                        g.DrawLine(placeholder.p, new Point(placeholder.tri.triX, placeholder.tri.triY + placeholder.tri.triHeight), new Point(placeholder.tri.triX + placeholder.tri.triWidth, placeholder.tri.triY + placeholder.tri.triHeight));
                     }
                     
                 }

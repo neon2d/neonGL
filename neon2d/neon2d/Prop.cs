@@ -42,10 +42,10 @@ namespace neon2d
         public Prop(Bitmap image, Physics.Rect dimensions)
         {
             propSource = image;
-            propX = (int) dimensions.x;
-            propY = (int) dimensions.y;
-            propWidth = (int) dimensions.width;
-            propHeight = (int) dimensions.height;
+            propX = (int)dimensions.x;
+            propY = (int)dimensions.y;
+            propWidth = (int)dimensions.width;
+            propHeight = (int)dimensions.height;
         }
 
     }

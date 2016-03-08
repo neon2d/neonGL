@@ -90,7 +90,7 @@ namespace neon2d
 
                         g.DrawString(placeholder.textcontent, placeholder.stringfont, placeholder.stringbrush, (float)placeholder.textx, (float)placeholder.texty);
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Shape.Line))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.linestruct))
                     {
                         //its a line
                         Scene.linestruct placeholder = (Scene.linestruct)scene.renderlist[i];
@@ -98,21 +98,21 @@ namespace neon2d
                         g.DrawLine(placeholder.p, new Point(placeholder.line.lx1, placeholder.line.ly1), new Point(placeholder.line.lx2, placeholder.line.ly2));
 
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Shape.Rectangle))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.rectstruct))
                     {
                         //its a rect
                         Scene.rectstruct placeholder = (Scene.rectstruct)scene.renderlist[i];
 
                         g.DrawRectangle(placeholder.p, placeholder.rect.rectx, placeholder.rect.recty, placeholder.rect.rectw, placeholder.rect.recth);
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Shape.Ellipse))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.ellipsstruct))
                     {
                         //its an ellipse
                         Scene.ellipsstruct placeholder = (Scene.ellipsstruct)scene.renderlist[i];
 
                         g.DrawEllipse(placeholder.p, placeholder.ell.ellipsx, placeholder.ell.ellipsy, placeholder.ell.ellipsw, placeholder.ell.ellipsh);
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Shape.Triangle))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.tristruct))
                     {
                         //its a triangle
                         Scene.tristruct placeholder = (Scene.tristruct)scene.renderlist[i];
@@ -121,40 +121,7 @@ namespace neon2d
                         g.DrawLine(placeholder.p, new Point(placeholder.tri.trix + (int)(placeholder.tri.triw / 2), placeholder.tri.triy), new Point(placeholder.tri.trix + placeholder.tri.triw, placeholder.tri.triy + placeholder.tri.trih));
                         g.DrawLine(placeholder.p, new Point(placeholder.tri.trix, placeholder.tri.triy + placeholder.tri.trih), new Point(placeholder.tri.trix + placeholder.tri.triw, placeholder.tri.triy + placeholder.tri.trih));
                     }
-                    /*
-                    THE FOLLOWING WAS INVALIDATED AFTER MODIFYING THE SCENE CLASS
-                    if (scene.spritelist[i] != null)
-                    {
-                        g.DrawImage(scene.spritelist[i].currentframe, new Rectangle(scene.spritelist[i].spritex, scene.spritelist[i].spritey, scene.spritelist[i].spritewidth, scene.spritelist[i].spriteheight));
-                    }
-                    if (scene.proplist[i] != null)
-                    {
-                        g.DrawImage(scene.proplist[i].propsource, new Rectangle(scene.proplist[i].propx, scene.proplist[i].propy, scene.proplist[i].propwidth, scene.proplist[i].propheight));
-                    }
-                    if (scene.linelist[i].p != null && scene.linelist[i].line != null)
-                    {
-                        g.DrawLine(scene.linelist[i].p, new Point(scene.linelist[i].line.lx1, scene.linelist[i].line.ly1), new Point(scene.linelist[i].line.lx2, scene.linelist[i].line.ly2));
-                    }
-                    if (scene.rectlist[i].p != null && scene.rectlist[i].rect != null)
-                    {
-                        g.DrawRectangle(scene.rectlist[i].p, scene.rectlist[i].rect.rectx, scene.rectlist[i].rect.recty, scene.rectlist[i].rect.rectw, scene.rectlist[i].rect.recth);
-                    }
-                    if (scene.ellipslist[i].p != null && scene.ellipslist[i].ell != null)
-                    {
-                        g.DrawEllipse(scene.ellipslist[i].p, scene.ellipslist[i].ell.ellipsx, scene.ellipslist[i].ell.ellipsy, scene.ellipslist[i].ell.ellipsw, scene.ellipslist[i].ell.ellipsh);
-                    }
-                    if (scene.trilist[i].p != null && scene.trilist[i].tri != null)
-                    {
-                        g.DrawLine(scene.trilist[i].p, new Point(scene.trilist[i].tri.trix, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih), new Point(scene.trilist[i].tri.trix + (int)(scene.trilist[i].tri.triw / 2), scene.trilist[i].tri.triy));
-                        g.DrawLine(scene.trilist[i].p, new Point(scene.trilist[i].tri.trix + (int)(scene.trilist[i].tri.triw / 2), scene.trilist[i].tri.triy), new Point(scene.trilist[i].tri.trix + scene.trilist[i].tri.triw, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih));
-                        g.DrawLine(scene.trilist[i].p, new Point(scene.trilist[i].tri.trix, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih), new Point(scene.trilist[i].tri.trix + scene.trilist[i].tri.triw, scene.trilist[i].tri.triy + scene.trilist[i].tri.trih));
-                    }
-                    if (scene.textlist[i] != null)
-                    {
-                        g.DrawString(scene.textlist[i].textcontent, scene.textlist[i].stringfont, scene.textlist[i].stringbrush, (float)scene.textlist[i].textx, (float)scene.textlist[i].texty);
-                    }
-                    //ui rendering happens down here
-                    */
+                    
                 }
                 else
                 {

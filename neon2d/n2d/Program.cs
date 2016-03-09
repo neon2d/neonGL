@@ -33,7 +33,11 @@ namespace n2d
         }
         public static void onStart()
         {
-            Console.WriteLine(vector + new Vector2i(20, 30));
+            // Vector2f's
+            Console.WriteLine(new Vector2f(10, 20.2f) + new Vector2f(20, 10.3f));
+
+            // Vecto2i's
+            Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
         }
 
         public static void updateVoid()
@@ -54,7 +58,7 @@ namespace n2d
 
             if(rect1.intersects(rect2))
             {
-                Console.WriteLine("intersecting!");
+       //         Console.WriteLine("intersecting!");
             }
 
             Shape.Triangle tri = new Shape.Triangle(100, 100, 50, 50);

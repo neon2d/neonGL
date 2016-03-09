@@ -74,4 +74,73 @@ namespace neon2d.Math
             return this.x + ", " + this.y;
         }
     }
+
+    public class Vector2f
+    {
+        public float x, y;
+        public Vector2f()
+        {
+            this.x = 0f;
+            this.y = 0f;
+        }
+
+        public Vector2f(float x, float y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public Vector2f add(Vector2f other)
+        {
+            this.x += other.x;
+            this.y += other.y;
+            return this;
+        }
+
+        public Vector2f subtract(Vector2f other)
+        {
+            this.x -= other.x;
+            this.y -= other.y;
+            return this;
+        }
+
+        public Vector2f multiply(Vector2f other)
+        {
+            this.x *= other.x;
+            this.y *= other.y;
+            return this;
+        }
+
+        public Vector2f divide(Vector2f other)
+        {
+            this.x /= other.x;
+            this.y /= other.y;
+            return this;
+        }
+
+        public static Vector2f operator+(Vector2f a, Vector2f b)
+        {
+            return a.add(b);
+        }
+
+        public static Vector2f operator-(Vector2f a, Vector2f b)
+        {
+            return a.subtract(b);
+        }
+
+        public static Vector2f operator*(Vector2f a, Vector2f b)
+        {
+            return a.multiply(b);
+        }
+
+        public static Vector2f operator/(Vector2f a, Vector2f b)
+        {
+            return a.divide(b);
+        }
+
+        public override string ToString()
+        {
+            return x + ", " + y;
+        }
+    }
 }

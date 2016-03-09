@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using neon2d.Math;
 
 namespace neon2d.Physics
 {
@@ -25,6 +26,33 @@ namespace neon2d.Physics
             return this.x + this.width > other.x && this.x < other.x + other.width
                    &&
                    this.y + this.height > other.y && this.y < other.y + other.height;
+        }
+
+    }
+
+    public class Circle
+    {
+
+        public float centerX, centerY;
+        public float radius;
+
+        public Circle(int centerX, int centerY, int radius)
+        {
+            this.centerX = centerX;
+            this.centerY = centerY;
+            this.radius = radius;
+        }
+        public Circle(Vector2i centerPoint, int radius)
+        {
+            this.centerX = centerPoint.x;
+            this.centerY = centerPoint.y;
+            this.radius = radius;
+        }
+
+        public bool intersects(Vector2i other)
+        {
+            return other.x >= centerX - radius && other.x <= centerX + radius
+                && other.y >= centerY - radius && other.y <= centerY + radius;
         }
 
     }

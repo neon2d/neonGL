@@ -12,17 +12,24 @@ namespace neon2d
         public class Line
         {
 
-            public int lx1 = 0;
-            public int ly1 = 0;
-            public int lx2 = 0;
-            public int ly2 = 0;
+            public int lX1 = 0;
+            public int lY1 = 0;
+            public int lX2 = 0;
+            public int lY2 = 0;
 
             public Line(int x1, int y1, int x2, int y2)
             {
-                lx1 = x1;
-                ly1 = y1;
-                lx2 = x2;
-                ly2 = y2;
+                lX1 = x1;
+                lY1 = y1;
+                lX2 = x2;
+                lY2 = y2;
+            }
+            public Line(Math.Vector2i point1, Math.Vector2i point2)
+            {
+                lX1 = point1.x;
+                lY1 = point1.y;
+                lX2 = point2.x;
+                lY2 = point2.y;
             }
 
         }
@@ -30,17 +37,24 @@ namespace neon2d
         public class Rectangle
         {
 
-            public int rectx = 0;
-            public int recty = 0;
-            public int rectw = 0;
-            public int recth = 0;
+            public int rectX = 0;
+            public int rectY = 0;
+            public int rectWidth = 0;
+            public int rectHeight = 0;
 
             public Rectangle(int x, int y, int width, int height)
             {
-                rectx = x;
-                recty = y;
-                rectw = width;
-                recth = height;
+                rectX = x;
+                rectY = y;
+                rectWidth = width;
+                rectHeight = height;
+            }
+            public Rectangle(Physics.Rect dimensions)
+            {
+                rectX = (int)dimensions.x;
+                rectY = (int)dimensions.y;
+                rectWidth = (int)dimensions.width;
+                rectHeight = (int)dimensions.height;
             }
         
         }
@@ -48,17 +62,24 @@ namespace neon2d
         public class Ellipse
         {
 
-            public int ellipsx = 0;
-            public int ellipsy = 0;
-            public int ellipsw = 0;
-            public int ellipsh = 0;
+            public int ellipsX = 0;
+            public int ellipsY = 0;
+            public int ellipsWidth = 0;
+            public int ellipsHeight = 0;
 
             public Ellipse(int x, int y, int width, int height)
             {
-                ellipsx = x;
-                ellipsy = y;
-                ellipsw = width;
-                ellipsh = height;
+                ellipsX = x;
+                ellipsY = y;
+                ellipsWidth = width;
+                ellipsHeight = height;
+            }
+            public Ellipse(Physics.Rect dimensions)
+            {
+                ellipsX = (int)dimensions.x;
+                ellipsY = (int)dimensions.y;
+                ellipsWidth = (int)dimensions.width;
+                ellipsHeight = (int)dimensions.height;
             }
 
         }
@@ -66,17 +87,24 @@ namespace neon2d
         public class Triangle
         {
 
-            public int trix = 0;
-            public int triy = 0;
-            public int triw = 0;
-            public int trih = 0;
+            public int triX = 0;
+            public int triY = 0;
+            public int triWidth = 0;
+            public int triHeight = 0;
 
             public Triangle(int x, int y, int width, int height)
             {
-                trix = x;
-                triy = y;
-                triw = width;
-                trih = height;
+                triX = x;
+                triY = y;
+                triWidth = width;
+                triHeight = height;
+            }
+            public Triangle(Physics.Rect dimensions)
+            {
+                triX = (int)dimensions.x;
+                triY = (int)dimensions.y;
+                triWidth = (int)dimensions.width;
+                triHeight = (int)dimensions.height;
             }
 
         }

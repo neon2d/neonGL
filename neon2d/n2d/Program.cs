@@ -50,7 +50,7 @@ namespace n2d
             }
 
             string imagepath = Environment.CurrentDirectory + @"\..\..\res\demoimage.png"; //this is /bin/Debug/ btw
-            Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey, 150, 150);
+            Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey);
             myscene.render(demoimage);
 
             Rect rect1 = new Rect(0, 0, 60, 60);

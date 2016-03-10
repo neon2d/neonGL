@@ -16,27 +16,13 @@ namespace neon2d
         public int propWidth;
         public int propHeight;
 
-        public Prop(Bitmap image, int x, int y, int width = -1, int height = -1)
+        public Prop(Bitmap image, int x, int y, int width, int height)
         {
             propSource = image;
             propX = x;
             propY = y;
-            if (width == -1)
-            {
-                propX = propSource.Width;
-            }
-            else
-            {
-                propWidth = width;
-            }
-            if (height == -1)
-            {
-                propHeight = propSource.Height;
-            }
-            else
-            {
-                propHeight = height;
-            }
+            propWidth = width;
+            propHeight = height;
         }
 
         public Prop(Bitmap image, Physics.Rect dimensions)

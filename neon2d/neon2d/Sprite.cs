@@ -19,29 +19,15 @@ namespace neon2d
         public int spriteWidth;
         public int spriteHeight;
         
-        public Sprite(Bitmap[] Frames, int x, int y, int width = -1, int height = -1)
+        public Sprite(Bitmap[] Frames, int x, int y, int width, int height)
         {
             spriteFrames = Frames;
             currentFrame = spriteFrames[0];
             spriteCt = spriteFrames.Length - 1;
             spriteX = x;
             spriteY = y;
-            if(width == -1)
-            {
-                spriteWidth = spriteFrames[0].Width;
-            }
-            else
-            {
-                spriteWidth = width;
-            }
-            if(height == -1)
-            {
-                spriteHeight = spriteFrames[0].Height;
-            }
-            else
-            {
-                spriteHeight = height;
-            }
+            spriteWidth = width;
+            spriteHeight = height;
         }
 
         public Sprite(Bitmap[] frames, Physics.Rect dimensions)

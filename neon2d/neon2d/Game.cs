@@ -37,6 +37,7 @@ namespace neon2d
             
             window.gamewindow.Focus();
             window.gamewindow.Paint += new System.Windows.Forms.PaintEventHandler(this.window_Paint);
+            window.gamewindow.Shown += Gamewindow_Shown;
 
             window.gamewindow.FormClosed += Gamewindow_FormClosed;
 
@@ -46,6 +47,11 @@ namespace neon2d
 
             update = onUpdate;
 
+        }
+
+        private void Gamewindow_Shown(object sender, EventArgs e)
+        {
+            window.gamewindow.Activate();
         }
 
         private void Gamewindow_FormClosed(object sender, FormClosedEventArgs e)

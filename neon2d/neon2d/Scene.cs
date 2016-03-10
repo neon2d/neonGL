@@ -16,6 +16,9 @@ namespace neon2d
         public Object[] renderlist = new Object[999999];
         public int renderct = 0;
 
+        public Bitmap backgroundimg = null;
+        public bool backgroundtiling = true;
+
         public Form ownerwindow;
 
         public Keys downkey;
@@ -323,6 +326,18 @@ namespace neon2d
         public int getMouseY()
         {
             return mousey;
+        }
+
+        //Background Stuff
+        public void renderBackground(Prop background, bool tiling = true)
+        {
+            backgroundimg = background.propSource;
+            backgroundtiling = tiling;
+        }
+        public void renderBackground(Bitmap background, bool tiling = true)
+        {
+            backgroundimg = background;
+            backgroundtiling = tiling;
         }
 
     }

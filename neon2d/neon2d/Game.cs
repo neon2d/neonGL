@@ -56,7 +56,21 @@ namespace neon2d
         public void window_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            
+
+            if (scene.backgroundimg != null)
+            {
+                if (scene.backgroundtiling)
+                {
+                    for (int i = 0; i <= (int)window.gamewindow.Width / scene.backgroundimg.Width; i++)
+                    {
+                        for (int j = 0; j <= (int)window.gamewindow.Height / scene.backgroundimg.Height; j++)
+                        {
+                            g.DrawImage(scene.backgroundimg, i * scene.backgroundimg.Width, j * scene.backgroundimg.Height);
+                        }
+                    }
+                }
+            }
+
             for(int i = 0; i <= 999998; i++)
             {
                 if (scene.renderlist[i] != null)

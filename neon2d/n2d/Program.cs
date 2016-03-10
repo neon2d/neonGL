@@ -58,7 +58,7 @@ namespace n2d
 
             if(rect1.intersects(rect2))
             {
-       //         Console.WriteLine("intersecting!");
+                //Console.WriteLine("intersecting!");
             }
 
             Shape.Triangle tri = new Shape.Triangle(100, 100, 50, 50);
@@ -77,6 +77,8 @@ namespace n2d
             myscene.render(mx.ToString(), 0, 0);
             myscene.render(my.ToString(), 0, 10);
             myscene.render("Vector result: " + vector.ToString(), 200, 100);
+
+            myscene.renderBackground(demoimage, true);
         }
 
         public static void checkInput()

@@ -28,6 +28,11 @@ namespace neon2d.Physics
                    this.y + this.height > other.y && this.y < other.y + other.height;
         }
 
+        public bool intersects(Vector2i other)
+        {
+            return other.x > this.x && other.x < this.x + width && other.y > this.y && other.y < this.y;
+        }
+
     }
 
     public class Circle

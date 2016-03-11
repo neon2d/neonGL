@@ -22,15 +22,15 @@ namespace n2d
 
         public static Vector2i vector = new Vector2i(10, 20);
 
-        public static void Main(string[] args)
-        {
-            mywindow = new Window(800, 600, "my awesome window");
-            myscene = new Scene(mywindow);
+        //public static void Main(string[] args)
+        //{
+        //    //mywindow = new Window(800, 600, "my awesome window");
+        //    //myscene = new Scene(mywindow);
 
-            Game maingame = new Game(mywindow, myscene, new Action(updateVoid));
-            onStart();
-            maingame.runGame();
-        }
+        //    //Game maingame = new Game(mywindow, myscene, new Action(updateVoid));
+        //    //onStart();
+        //    //maingame.runGame();
+        //}
         public static void onStart()
         {
             // Vector2f's

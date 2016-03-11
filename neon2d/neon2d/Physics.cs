@@ -30,7 +30,12 @@ namespace neon2d.Physics
 
         public bool intersects(Vector2i other)
         {
-            return other.x > this.x && other.x < this.x + width && other.y > this.y && other.y < this.y;
+            return other.x > this.x && other.x < this.x + width && other.y > this.y && other.y < this.y + this.height;
+        }
+
+        public bool intersects(Vector2f other)
+        {
+            return other.x > this.x && other.x < this.x + width && other.y > this.y && other.y < this.y + this.height;
         }
 
     }

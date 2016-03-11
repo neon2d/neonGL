@@ -10,7 +10,7 @@ namespace neon2d
     {
         private Game master;
         private Window window;
-        private Scene scene;
+        protected Scene scene;
 
         public BasicGame(int width, int height, string title)
         {
@@ -23,7 +23,6 @@ namespace neon2d
         }
 
         public virtual void OnUpdate() { }
-        public virtual void OnRender() { }
         public virtual void OnStart() { }
     }
 }

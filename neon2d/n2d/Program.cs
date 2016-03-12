@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using neon2d;
 using neon2d.Physics;
 using neon2d.Math;
+using neon2d.Networking;
 
 namespace n2d
 {
@@ -31,6 +32,9 @@ namespace n2d
 
             // Vecto2i's
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
+
+            Server s = new Server();
+            s.Start("http://localhost:80/");
         }
 
         public override void OnUpdate()

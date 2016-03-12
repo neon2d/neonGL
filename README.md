@@ -1,5 +1,5 @@
 # neon2d
-a simple c# game engine
+A simple c# game engine
 
 [![Build Status](https://ci.appveyor.com/api/projects/status/hobn7kgmotmf1kb7?svg=true
 )](https://ci.appveyor.com/project/matthewd673/neon2d)

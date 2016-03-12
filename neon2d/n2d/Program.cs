@@ -35,6 +35,8 @@ namespace n2d
 
             Server s = new Server();
             s.Start("http://localhost:80/");
+            Client c = new Client();
+            c.Join("ws://localhost/");
         }
 
         public override void OnUpdate()

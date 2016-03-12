@@ -82,4 +82,79 @@ namespace neon2d.Networking
 
     }
 
+    public class Client
+    {
+
+        private static UTF8Encoding encoding = new UTF8Encoding();
+
+        public static string data;
+
+        public void Join(string url)
+        {
+            Connect(url).Wait();
+        }
+
+        public static async Task Connect(string url)
+        {
+
+            System.Threading.Thread.Sleep(1000);
+
+            ClientWebSocket socket = null;
+
+            try
+            {
+                socket = new ClientWebSocket();
+                await socket.ConnectAsync(new Uri(url), System.Threading.CancellationToken.None);
+                await Task.WhenAll(Receive(socket), Send(socket, "ayy lmao"));
+            }
+            catch (Exception ex)
+            {
+                neon2d.Message.log("Exception: " + ex);
+            }
+            finally
+            {
+                if(socket != null)
+                {
+                    socket.Dispose();
+                }
+            }
+
+        }
+
+        public static async Task Send(ClientWebSocket socket, string content)
+        {
+            while(socket.State == WebSocketState.Open)
+            {
+                byte[] buffer = encoding.GetBytes(content);
+
+                await socket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Binary, false, System.Threading.CancellationToken.None);
+
+                await Task.Delay(1000);
+            }
+        }
+
+        public static async Task Receive(ClientWebSocket socket)
+        {
+            byte[] buffer = new byte[1024];
+            while(socket.State == WebSocketState.Open)
+            {
+                var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), System.Threading.CancellationToken.None);
+                if(result.MessageType == WebSocketMessageType.Close)
+                {
+                    await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, System.Threading.CancellationToken.None);
+                }
+                else
+                {
+                    data = Encoding.UTF8.GetString(buffer).TrimEnd('\0');
+                }
+            }
+        }
+
+        public string getData()
+        {
+            return data;
+        }
+
+    }
+
 }

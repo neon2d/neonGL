@@ -32,11 +32,7 @@ namespace n2d
 
             // Vecto2i's
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
-
-            Server s = new Server();
-            s.Start("http://localhost:80/");
-            Client c = new Client();
-            c.Join("ws://localhost/");
+            
         }
 
         public override void OnUpdate()
@@ -49,8 +45,8 @@ namespace n2d
             }
 
             string imagepath = Environment.CurrentDirectory + @"\..\..\res\demoimage.png"; //this is /bin/Debug/ btw
-            Prop demoimage = new Prop(new Bitmap(imagepath), 10, imagey, 150, 150);
-            scene.render(demoimage);
+            Prop demoimage = new Prop(new Bitmap(imagepath), 150, 150);
+            scene.render(demoimage, 0, imagey);
 
             Rect rect1 = new Rect(0, 0, 60, 60);
             Rect rect2 = new Rect(10, 10, 40, 40);

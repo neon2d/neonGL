@@ -84,15 +84,43 @@ namespace neon2d
             downkey = e.KeyCode;
         }
 
-        public void render(Sprite render)
+        public struct SpriteStruct
         {
-            renderlist[renderct] = render;
+            public Sprite s;
+            public int x;
+            public int y;
+
+            public SpriteStruct(Sprite s, int x, int y)
+            {
+                this.s = s;
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        public struct PropStruct
+        {
+            public Prop p;
+            public int x;
+            public int y;
+
+            public PropStruct(Prop p, int x, int y)
+            {
+                this.p = p;
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        public void render(Sprite render, int x, int y)
+        {
+            renderlist[renderct] = new SpriteStruct(render, x, y);
             renderct++;
         }
 
-        public void render(Prop render)
+        public void render(Prop render, int x, int y)
         {
-            renderlist[renderct] = render;
+            renderlist[renderct] = new PropStruct(render, x, y);
             renderct++;
         }
 

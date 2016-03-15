@@ -81,19 +81,19 @@ namespace neon2d
             {
                 if (scene.renderlist[i] != null)
                 {
-                    if(scene.renderlist[i].GetType() == typeof(Sprite))
+                    if(scene.renderlist[i].GetType() == typeof(Scene.SpriteStruct))
                     {
                         //its a sprite
-                        Sprite placeholder = (Sprite) scene.renderlist[i];
+                        Scene.SpriteStruct placeholder = (Scene.SpriteStruct) scene.renderlist[i];
                         
-                        g.DrawImage(placeholder.currentFrame, new Rectangle(placeholder.spriteX, placeholder.spriteY, placeholder.spriteWidth, placeholder.spriteHeight));
+                        g.DrawImage(placeholder.s.currentFrame, new Rectangle(placeholder.x, placeholder.y, placeholder.s.spriteWidth, placeholder.s.spriteHeight));
                     }
-                    else if(scene.renderlist[i].GetType() == typeof(Prop))
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.PropStruct))
                     {
                         //its a prop
-                        Prop placeholder = (Prop)scene.renderlist[i];
+                        Scene.PropStruct placeholder = (Scene.PropStruct)scene.renderlist[i];
 
-                        g.DrawImage(placeholder.propSource, new Rectangle(placeholder.propX, placeholder.propY, placeholder.propWidth, placeholder.propHeight));
+                        g.DrawImage(placeholder.p.propSource, new Rectangle(placeholder.x, placeholder.y, placeholder.p.propWidth, placeholder.p.propHeight));
                     }
                     else if(scene.renderlist[i].GetType() == typeof(Scene.TextStruct))
                     {

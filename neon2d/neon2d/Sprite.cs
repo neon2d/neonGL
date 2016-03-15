@@ -14,31 +14,16 @@ namespace neon2d
         public Bitmap currentFrame;
         int spriteCt = 0;
         int currentFrameId = 0;
-        public int spriteX;
-        public int spriteY;
         public int spriteWidth;
         public int spriteHeight;
-        
-        public Sprite(Bitmap[] Frames, int x, int y, int width, int height)
+
+        public Sprite(Bitmap[] Frames, int width, int height)
         {
             spriteFrames = Frames;
             currentFrame = spriteFrames[0];
             spriteCt = spriteFrames.Length - 1;
-            spriteX = x;
-            spriteY = y;
             spriteWidth = width;
             spriteHeight = height;
-        }
-
-        public Sprite(Bitmap[] frames, Physics.Rect dimensions)
-        {
-            spriteFrames = frames;
-            currentFrame = spriteFrames[0];
-            spriteCt = spriteFrames.Length - 1;
-            spriteX = (int)dimensions.x;
-            spriteY = (int)dimensions.y;
-            spriteWidth = (int)dimensions.width;
-            spriteHeight = (int)dimensions.height;
         }
 
         public void stepForward(int increment = 1)

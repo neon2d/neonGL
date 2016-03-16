@@ -124,6 +124,28 @@ namespace neon2d
             renderct++;
         }
 
+        //differs from ParticleSystem.ParticleStruct!!
+        public struct ParticleRenderStruct
+        {
+            public int x;
+            public int y;
+            public ParticleSystem ps;
+
+            public ParticleRenderStruct(int x, int y, ParticleSystem ps)
+            {
+                this.x = x;
+                this.y = y;
+                this.ps = ps;
+            }
+
+        }
+
+        public void render(ParticleSystem ps, int x, int y)
+        {
+            renderlist[renderct] = new ParticleRenderStruct(x, y, ps);
+            renderct++;
+        }
+
         public struct TextStruct
         {
             public string stringtext;

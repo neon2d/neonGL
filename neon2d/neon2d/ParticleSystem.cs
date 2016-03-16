@@ -9,13 +9,8 @@ using neon2d.Math;
 
 namespace neon2d
 {
-    class ParticleSystem
+    public class ParticleSystem
     {
-
-
-        public int x;
-        public int y;
-
         public float left;
         public float right;
         public float up;
@@ -25,24 +20,16 @@ namespace neon2d
         public object[] particles = new object[999999999];
         public int particleCt = 0;
 
-        public ParticleSystem(int x, int y, float leftStrength, float rightStrength, float upStrenght, float downStrength, int movementspeed = 3)
+        public ParticleSystem(float leftStrength, float rightStrength, float upStrenght, float downStrength, int movementspeed = 3)
         {
-
-            this.x = x;
-            this.y = y;
-
             left = leftStrength;
             right = rightStrength;
             up = upStrenght;
             down = downStrength;
             speed = movementspeed;
         }
-        public ParticleSystem(int x, int y, Vector2f horizontalStrength, Vector2f verticalStrength, int movementspeed = 3)
+        public ParticleSystem(Vector2f horizontalStrength, Vector2f verticalStrength, int movementspeed = 3)
         {
-
-            this.x = x;
-            this.y = y;
-
             left = horizontalStrength.x;
             right = horizontalStrength.y;
             up = verticalStrength.x;

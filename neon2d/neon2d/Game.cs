@@ -133,6 +133,36 @@ namespace neon2d
                         g.DrawLine(placeholder.p, new Point(placeholder.tri.triX + (int)(placeholder.tri.triWidth / 2), placeholder.tri.triY), new Point(placeholder.tri.triX + placeholder.tri.triWidth, placeholder.tri.triY + placeholder.tri.triHeight));
                         g.DrawLine(placeholder.p, new Point(placeholder.tri.triX, placeholder.tri.triY + placeholder.tri.triHeight), new Point(placeholder.tri.triX + placeholder.tri.triWidth, placeholder.tri.triY + placeholder.tri.triHeight));
                     }
+                    else if(scene.renderlist[i].GetType() == typeof(Scene.ParticleRenderStruct))
+                    {
+                        //its a particle system
+                        Scene.ParticleRenderStruct renderholder = (Scene.ParticleRenderStruct)scene.renderlist[i];
+                        ParticleSystem placeholder = (ParticleSystem)renderholder.ps;
+
+                        for(int j = 0; j <= 999999998; j++)
+                        {
+                            if(placeholder.particles[j] != null)
+                            {
+                                //safe to render
+                                ParticleSystem.ParticleStruct particle = (ParticleSystem.ParticleStruct)placeholder.particles[j];
+                                if(particle.particleSource.GetType() == typeof(Prop))
+                                {
+                                    Prop particleprop = (Prop)particle.particleSource;
+                                    g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);
+                                }
+                                if(particle.particleSource.GetType() == typeof(Sprite))
+                                {
+                                    Sprite particlesprite = (Sprite)particle.particleSource;
+                                    g.DrawImage(particlesprite.currentFrame, renderholder.x + particle.x, renderholder.y + particle.y);
+                                }
+                            }
+                            else
+                            {
+                                //its null, break
+                                break;
+                            }
+                        }
+                    }
                     
                 }
                 else

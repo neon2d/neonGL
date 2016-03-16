@@ -20,6 +20,8 @@ namespace n2d
 
         private Vector2i vector = new Vector2i(10, 20);
 
+        private ParticleSystem particles;
+
         public Program()
             : base(800, 600, "Neon2D Demo!")
         {
@@ -32,6 +34,14 @@ namespace n2d
 
             // Vecto2i's
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
+
+            //particles
+            particles = new ParticleSystem(1f, 1f, 1f, 1f);
+
+            for(int i = 0; i <= 10; i++)
+            {
+                particles.addParticle(new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\demoimage.png"), 25, 25));
+            }
             
         }
 
@@ -73,7 +83,12 @@ namespace n2d
             scene.render(my.ToString(), 0, 10);
             scene.render("Vector result: " + vector.ToString(), 200, 100);
 
-            scene.renderBackground(demoimage, true);
+            //THIS CODE DEMOS BACKGROUNDS
+            //BUT ALSO MAKES THE WINDOW MORE CLUTTERED (BAD FOR THE DEMO)
+            //scene.renderBackground(demoimage, true);
+
+            particles.step();
+            scene.render(particles, 100, 100);
 
         }
 

@@ -17,7 +17,7 @@ namespace neon2d
         public float down;
         public int speed;
 
-        public object[] particles = new object[999999999];
+        public object[] particles = new object[999999];
         public int particleCt = 0;
 
         public ParticleSystem(float leftStrength, float rightStrength, float upStrenght, float downStrength, int movementspeed = 3)
@@ -72,19 +72,19 @@ namespace neon2d
                     //move everything (based on max speed and strength)
                     if(this.left != 0)
                     {
-                        placeholder.x -= Convert.ToInt32(speed / (1 - left));
+                        placeholder.x -= Convert.ToInt32(speed / left);
                     }
                     if(this.right != 0)
                     {
-                        placeholder.x += Convert.ToInt32(speed / (1 - right));
+                        placeholder.x += Convert.ToInt32(speed / right);
                     }
                     if(this.up != 0)
                     {
-                        placeholder.y -= Convert.ToInt32(speed / (1 - up));
+                        placeholder.y -= Convert.ToInt32(speed / up);
                     }
                     if(this.down != 0)
                     {
-                        placeholder.y -= Convert.ToInt32(speed / (1 - down));
+                        placeholder.y -= Convert.ToInt32(speed / down);
                     }
                     //save back changes
                     particles[i] = placeholder;

@@ -139,7 +139,7 @@ namespace neon2d
                         Scene.ParticleRenderStruct renderholder = (Scene.ParticleRenderStruct)scene.renderlist[i];
                         ParticleSystem placeholder = (ParticleSystem)renderholder.ps;
 
-                        for(int j = 0; j <= 999999998; j++)
+                        for(int j = 0; j <= 999998; j++)
                         {
                             if(placeholder.particles[j] != null)
                             {

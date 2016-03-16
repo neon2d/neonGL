@@ -52,9 +52,9 @@ namespace neon2d
 
         public struct ParticleStruct
         {
-            Object particleSource;
-            int x;
-            int y;
+            public Object particleSource;
+            public int x;
+            public int y;
             public ParticleStruct(Object particleSource, int x, int y)
             {
                 this.particleSource = particleSource;
@@ -72,6 +72,37 @@ namespace neon2d
         {
             particles[particleCt] = new ParticleStruct(particleSource, 0, 0);
             particleCt++;
+        }
+
+        //movement and rendering
+        public void step()
+        {
+            for(int i = 0; i <= particleCt--; i++)
+            {
+                if(particles[i].GetType() == typeof(ParticleStruct))
+                {
+                    ParticleStruct placeholder = (ParticleStruct)particles[i];
+                    //move everything (based on max speed and strength)
+                    if(this.left != 0)
+                    {
+                        placeholder.x -= Convert.ToInt32(speed / (1 - left));
+                    }
+                    if(this.right != 0)
+                    {
+                        placeholder.x += Convert.ToInt32(speed / (1 - right));
+                    }
+                    if(this.up != 0)
+                    {
+                        placeholder.y -= Convert.ToInt32(speed / (1 - up));
+                    }
+                    if(this.down != 0)
+                    {
+                        placeholder.y -= Convert.ToInt32(speed / (1 - down));
+                    }
+                    //save back changes
+                    particles[i] = placeholder;
+                }
+            }
         }
 
     }

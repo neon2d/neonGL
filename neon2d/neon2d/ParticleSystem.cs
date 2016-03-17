@@ -11,16 +11,16 @@ namespace neon2d
 {
     public class ParticleSystem
     {
-        public float left;
-        public float right;
-        public float up;
-        public float down;
+        public int left;
+        public int right;
+        public int up;
+        public int down;
         public int speed;
 
         public object[] particles = new object[999999];
         public int particleCt = 0;
 
-        public ParticleSystem(float leftStrength, float rightStrength, float upStrenght, float downStrength, int movementspeed = 3)
+        public ParticleSystem(int leftStrength, int rightStrength, int upStrenght, int downStrength, int movementspeed = 3)
         {
             left = leftStrength;
             right = rightStrength;
@@ -28,7 +28,7 @@ namespace neon2d
             down = downStrength;
             speed = movementspeed;
         }
-        public ParticleSystem(Vector2f horizontalStrength, Vector2f verticalStrength, int movementspeed = 3)
+        public ParticleSystem(Vector2i horizontalStrength, Vector2i verticalStrength, int movementspeed = 3)
         {
             left = horizontalStrength.x;
             right = horizontalStrength.y;
@@ -72,19 +72,19 @@ namespace neon2d
                     //move everything (based on max speed and strength)
                     if(this.left != 0)
                     {
-                        placeholder.x -= Convert.ToInt32(speed / left);
+                        placeholder.x -= left;
                     }
                     if(this.right != 0)
                     {
-                        placeholder.x += Convert.ToInt32(speed / right);
+                        placeholder.x += right;
                     }
                     if(this.up != 0)
                     {
-                        placeholder.y -= Convert.ToInt32(speed / up);
+                        placeholder.y -= up;
                     }
                     if(this.down != 0)
                     {
-                        placeholder.y -= Convert.ToInt32(speed / down);
+                        placeholder.y -= down;
                     }
                     //save back changes
                     particles[i] = placeholder;

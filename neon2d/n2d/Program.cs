@@ -36,11 +36,11 @@ namespace n2d
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
 
             //particles
-            particles = new ParticleSystem(1f, 1f, 1f, 1f);
+            particles = new ParticleSystem(3, 0, 3, 0);
 
             for(int i = 0; i <= 10; i++)
             {
-                particles.addParticle(new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\demoimage.png"), 25, 25));
+                particles.addParticle(new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\particle.png"), 25, 25));
             }
             
         }

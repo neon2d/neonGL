@@ -148,12 +148,14 @@ namespace neon2d
                                 if(particle.particleSource.GetType() == typeof(Prop))
                                 {
                                     Prop particleprop = (Prop)particle.particleSource;
-                                    g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);
+                                    if(particle.age <= placeholder.maxage)
+                                        g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);
                                 }
                                 if(particle.particleSource.GetType() == typeof(Sprite))
                                 {
                                     Sprite particlesprite = (Sprite)particle.particleSource;
-                                    g.DrawImage(particlesprite.currentFrame, renderholder.x + particle.x, renderholder.y + particle.y);
+                                    if(particle.age <= placeholder.maxage)
+                                        g.DrawImage(particlesprite.currentFrame, renderholder.x + particle.x, renderholder.y + particle.y);
                                 }
                             }
                             else

@@ -16,25 +16,28 @@ namespace neon2d
         public int up;
         public int down;
         public int speed;
+        public int maxage;
 
         public object[] particles = new object[999999];
         public int particleCt = 0;
 
-        public ParticleSystem(int leftStrength, int rightStrength, int upStrenght, int downStrength, int movementspeed = 3)
+        public ParticleSystem(int leftStrength, int rightStrength, int upStrenght, int downStrength, int movementspeed = 3, int maxage = 5)
         {
             left = leftStrength;
             right = rightStrength;
             up = upStrenght;
             down = downStrength;
             speed = movementspeed;
+            this.maxage = maxage;
         }
-        public ParticleSystem(Vector2i horizontalStrength, Vector2i verticalStrength, int movementspeed = 3)
+        public ParticleSystem(Vector2i horizontalStrength, Vector2i verticalStrength, int movementspeed = 3, int maxage = 5)
         {
             left = horizontalStrength.x;
             right = horizontalStrength.y;
             up = verticalStrength.x;
             down = verticalStrength.y;
             speed = movementspeed;
+            this.maxage = maxage;
         }
 
         public struct ParticleStruct
@@ -42,11 +45,13 @@ namespace neon2d
             public Object particleSource;
             public int x;
             public int y;
-            public ParticleStruct(Object particleSource, int x, int y)
+            public int age;
+            public ParticleStruct(Object particleSource, int x= 0, int y= 0, int age = 0)
             {
                 this.particleSource = particleSource;
                 this.x = x;
                 this.y = y;
+                this.age = age;
             }
         }
 
@@ -69,6 +74,7 @@ namespace neon2d
                 if(particles[i].GetType() == typeof(ParticleStruct))
                 {
                     ParticleStruct placeholder = (ParticleStruct)particles[i];
+                    placeholder.age++;
                     //move everything (based on max speed and strength)
                     if(this.left != 0)
                     {

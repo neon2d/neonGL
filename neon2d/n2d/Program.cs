@@ -22,6 +22,8 @@ namespace n2d
 
         private ParticleSystem particles;
 
+        private Prop particleProp = new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\particle.png"), 25, 25);
+
         public Program()
             : base(800, 600, "Neon2D Demo!")
         {
@@ -40,7 +42,7 @@ namespace n2d
 
             for(int i = 0; i <= 10; i++)
             {
-                particles.addParticle(new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\particle.png"), 25, 25));
+                particles.addParticle(particleProp);
             }
             
         }
@@ -87,6 +89,7 @@ namespace n2d
             //BUT ALSO MAKES THE WINDOW MORE CLUTTERED (BAD FOR THE DEMO)
             //scene.renderBackground(demoimage, true);
 
+            particles.addParticle(particleProp);
             particles.step();
             scene.render(particles, 100, 100);
 

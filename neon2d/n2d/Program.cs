@@ -23,6 +23,7 @@ namespace n2d
         private ParticleSystem particles;
 
         private Prop particleProp = new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\particle.png"), 25, 25);
+        private Prop particleProp2 = new Prop(new Bitmap(Environment.CurrentDirectory + @"\..\..\res\particle2.png"), 25, 25);
 
         public Program()
             : base(800, 600, "Neon2D Demo!")
@@ -38,7 +39,8 @@ namespace n2d
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
 
             //particles
-            particles = new ParticleSystem(3, 0, 3, 0);
+            particles = new ParticleSystem(7, 0, 7, 0, 10);
+            particles.setFluctuation(2);
 
             for(int i = 0; i <= 10; i++)
             {
@@ -90,8 +92,10 @@ namespace n2d
             //scene.renderBackground(demoimage, true);
 
             particles.addParticle(particleProp);
+            particles.addParticle(particleProp2);
+            
             particles.step();
-            scene.render(particles, 100, 100);
+            scene.render(particles, 400, 300);
 
         }
 

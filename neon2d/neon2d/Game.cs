@@ -139,8 +139,9 @@ namespace neon2d
                         Scene.ParticleRenderStruct renderholder = (Scene.ParticleRenderStruct)scene.renderlist[i];
                         ParticleSystem placeholder = (ParticleSystem)renderholder.ps;
 
-                        for(int j = 0; j <= 999998; j++)
+                        for(int j = 0; j <= placeholder.particles.Count - 1; j++)
                         {
+                            
                             if(placeholder.particles[j] != null)
                             {
                                 //safe to render
@@ -148,14 +149,11 @@ namespace neon2d
                                 if(particle.particleSource.GetType() == typeof(Prop))
                                 {
                                     Prop particleprop = (Prop)particle.particleSource;
-                                    if(particle.age <= placeholder.maxage)
-                                        g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);
-                                }
+                                    g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);}
                                 if(particle.particleSource.GetType() == typeof(Sprite))
                                 {
                                     Sprite particlesprite = (Sprite)particle.particleSource;
-                                    if(particle.age <= placeholder.maxage)
-                                        g.DrawImage(particlesprite.currentFrame, renderholder.x + particle.x, renderholder.y + particle.y);
+                                    g.DrawImage(particlesprite.currentFrame, renderholder.x + particle.x, renderholder.y + particle.y);
                                 }
                             }
                             else

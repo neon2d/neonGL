@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace neon2d
     public class Scene
     {
 
-        public Object[] renderlist = new Object[999999];
+        public ArrayList renderlist = new ArrayList();
         public int renderct = 0;
 
         public Bitmap backgroundimg = null;
@@ -114,13 +115,13 @@ namespace neon2d
 
         public void render(Sprite render, int x, int y)
         {
-            renderlist[renderct] = new SpriteStruct(render, x, y);
+            renderlist.Add(new SpriteStruct(render, x, y));
             renderct++;
         }
 
         public void render(Prop render, int x, int y)
         {
-            renderlist[renderct] = new PropStruct(render, x, y);
+            renderlist.Add(new PropStruct(render, x, y));
             renderct++;
         }
 
@@ -142,7 +143,7 @@ namespace neon2d
 
         public void render(ParticleSystem ps, int x, int y)
         {
-            renderlist[renderct] = new ParticleRenderStruct(x, y, ps);
+            renderlist.Add(new ParticleRenderStruct(x, y, ps));
             renderct++;
         }
 
@@ -186,7 +187,7 @@ namespace neon2d
             {
                 tempfont = textfont;
             }
-            renderlist[renderct] = new TextStruct(text, x, y, tempcolor, tempfont);
+            renderlist.Add(new TextStruct(text, x, y, tempcolor, tempfont));
             renderct++;
         }
 
@@ -261,7 +262,7 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             LineStruct ls = new LineStruct(line, pcolor);
-            renderlist[renderct] = ls;
+            renderlist.Add(ls);
             renderct++;
         }
 
@@ -277,7 +278,7 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             RectStruct rs = new RectStruct(rect, pcolor);
-            renderlist[renderct] = rs;
+            renderlist.Add(rs);
             renderct++;
         }
 
@@ -293,7 +294,7 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             EllipsStruct es = new EllipsStruct(ellipse, pcolor);
-            renderlist[renderct] = es;
+            renderlist.Add(es);
             renderct++;
         }
 
@@ -309,7 +310,7 @@ namespace neon2d
                 pcolor = new Pen(color, thickness);
             }
             TriStruct ts = new TriStruct(triangle, pcolor);
-            renderlist[renderct] = ts;
+            renderlist.Add(ts);
             renderct++;
         }
 
@@ -333,10 +334,7 @@ namespace neon2d
 
         public void cleanRenderBuffer()
         {
-            for(int i = 0; i <= 999998; i++)
-            {
-                renderlist[i] = null;
-            }
+            renderlist.Clear();
             renderct = 0;
         }
 

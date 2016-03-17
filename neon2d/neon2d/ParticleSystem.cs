@@ -64,7 +64,7 @@ namespace neon2d
         //movement and rendering
         public void step()
         {
-            for(int i = 0; i <= particleCt--; i++)
+            for(int i = 0; i <= particleCt - 1; i++)
             {
                 if(particles[i].GetType() == typeof(ParticleStruct))
                 {

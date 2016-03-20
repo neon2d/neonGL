@@ -16,10 +16,10 @@ namespace neon2d
             //for easy to use dialogs, use Message.send
             MessageBox.Show(msg, "neon2d has encountered an error");
         }
-        
-        public static void send(string msg, string caption = "")
+
+        public static void send(object msg, string caption = "Infomation.")
         {
-            MessageBox.Show(msg, caption);
+            MessageBox.Show(msg.ToString(), caption);
         }
 
         public static void log(string msg)

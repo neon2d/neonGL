@@ -46,7 +46,7 @@ namespace n2d
             {
                 particles.addParticle(particleProp);
             }
-            
+            neon2d.Message.send(10);
         }
 
         public override void OnUpdate()
@@ -96,7 +96,6 @@ namespace n2d
             
             particles.step();
             scene.render(particles, 400, 300);
-
         }
 
         public void checkInput()

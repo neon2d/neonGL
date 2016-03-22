@@ -22,6 +22,11 @@ namespace neon2d
             MessageBox.Show(msg.ToString(), caption);
         }
 
+        public static void send(string msg, string caption = "Infomation.")
+        {
+            MessageBox.Show(msg, caption);
+        }
+
         public static void log(string msg)
         {
             Console.WriteLine(msg);

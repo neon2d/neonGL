@@ -30,7 +30,7 @@ namespace n2d
         {
         }
 
-        public override void OnStart()
+        public override void onStart()
         {
             // Vector2f's
             Console.WriteLine(new Vector2f(10, 20.2f) + new Vector2f(20, 10.3f));
@@ -49,7 +49,7 @@ namespace n2d
             neon2d.Message.send(10);
         }
 
-        public override void OnUpdate()
+        public override void onUpdate()
         {
             checkInput();
 

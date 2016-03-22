@@ -17,12 +17,12 @@ namespace neon2d
             window = new Window(width, height, title);
             scene = new Scene(window);
 
-            master = new Game(window, scene, new Action(OnUpdate));
-            OnStart();
+            master = new Game(window, scene, new Action(onUpdate));
+            onStart();
             master.runGame();
         }
 
-        public virtual void OnUpdate() { }
-        public virtual void OnStart() { }
+        public virtual void onUpdate() { }
+        public virtual void onStart() { }
     }
 }

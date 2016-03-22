@@ -46,7 +46,6 @@ namespace n2d
             {
                 particles.addParticle(particleProp);
             }
-            neon2d.Message.send(10);
         }
 
         public override void onUpdate()

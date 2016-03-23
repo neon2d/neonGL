@@ -9,6 +9,7 @@ namespace neon2d.Math
     public class Vector2i
     {
         public int x, y;
+
         public Vector2i()
         {
             this.x = 0;

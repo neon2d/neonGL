@@ -36,21 +36,21 @@ namespace neon2d
         /// </summary>
         public static readonly Colour BLACK = new Colour(0xFF000000);
         
-        private long _A;
+        private long _a;
         
         /// <summary>
         /// The alpha component of this colour.
         /// Integer (32 Bit). Should be between 0 and 255
         /// </summary>
-        public int A
+        public int a
         {
             get
             {
-                return (int)_A;
+                return (int)_a;
             }
             set
             {
-                _A = value;
+                _a = value;
             }
         }
 
@@ -58,19 +58,19 @@ namespace neon2d
         /// The red component of this colour
         /// Integer (32 Bit). Should be between 0 and 255
         /// </summary>
-        public int R;
+        public int r;
 
         /// <summary>
         /// The green component of this colour
         /// Integer (32 Bit). Should be between 0 and 255
         /// </summary>
-        public int G;
+        public int g;
 
         /// <summary>
         /// The blue componenet of this colour
         /// Integer (32 Bit). Should be between 0 and 255
         /// </summary>
-        public int B;
+        public int b;
 
         /// <summary>
         /// Creates a new ARGB colour.
@@ -81,10 +81,10 @@ namespace neon2d
         /// <param name="b">Blue Compnent. Integer (32 bit). Between 0 and 225.</param>
         public Colour(int a, int r, int g, int b)
         {
-            this._A = a;
-            this.R = r;
-            this.G = g;
-            this.B = b;
+            this._a = a;
+            this.r = r;
+            this.r = g;
+            this.r = b;
         }
 
         /// <summary>
@@ -94,10 +94,10 @@ namespace neon2d
         /// <param name="argb">Hexidecimal colour. Should be in the form 0xAARRGGBB</param>
         public Colour(uint argb)
         {
-            this._A = (argb & 0xFF000000) >> 24;
-            this.R = (int)(argb & 0x00FF0000) >> 16;
-            this.G = (int)(argb & 0x0000FF00) >> 8;
-            this.B = (int)(argb & 0x000000FF);
+            this._a = (argb & 0xFF000000) >> 24;
+            this.r = (int)(argb & 0x00FF0000) >> 16;
+            this.g = (int)(argb & 0x0000FF00) >> 8;
+            this.b = (int)(argb & 0x000000FF);
         }
         
         /// <summary>
@@ -106,7 +106,7 @@ namespace neon2d
         /// <returns>int (32 bit)</returns>
         public int getRGB()
         {
-            return ((this.R & 0xFF) << 16) + ((this.G & 0xFF) << 8) + (this.B & 0xFF);
+            return ((this.r & 0xFF) << 16) + ((this.r & 0xFF) << 8) + (this.b & 0xFF);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace neon2d
         /// <returns>int (32 bit)</returns>
         public int getARGB()
         {
-            return (((int)this._A & 0xFF) << 24) + ((this.R & 0xFF) << 16) + ((this.G & 0xFF) << 8) + (this.B & 0xFF);
+            return (((int)this._a & 0xFF) << 24) + ((this.r & 0xFF) << 16) + ((this.g & 0xFF) << 8) + (this.b & 0xFF);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace neon2d
         /// <returns></returns>
         public override string ToString()
         {
-            string rgb = "Alpha: " + (int)this._A + " Red: " + this.R + " Green: " + this.G + " Blue: " + this.B;
+            string rgb = "Alpha: " + (int)this._a + " Red: " + this.r + " Green: " + this.g + " Blue: " + this.b;
             string hex = "Hexidecimal: #" + string.Format("{0:X}", getARGB());
             return rgb + "\n" + hex;
         }

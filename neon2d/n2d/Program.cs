@@ -33,7 +33,7 @@ namespace n2d
         public override void onStart()
         {
             // Vector2f's
-            Console.WriteLine(new Vector2f(10, 20.2f));
+            Console.WriteLine(new Vector2f(10, 20.2f) + new Vector2f(20, 10.3f));
 
             // Vecto2i's
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
@@ -47,13 +47,19 @@ namespace n2d
                 particles.addParticle(particleProp);
             }
 
-            Colour magneta = new Colour(0xFF00FF);
+            Colour magneta = new Colour(0, 255, 255, 255);
 
             Colour transparentWhite = new Colour(0x00FFFFFF);
 
             Colour argbTest = new Colour(255, 255, 255, 255);
 
-            Console.WriteLine(transparentWhite);
+            Console.WriteLine(magneta);
+
+            Brush brush = magneta.toSysBrush();
+
+            Color systemDrawingColor = magneta.toSysColor();
+
+            Colour neonColourTest = systemDrawingColor.toNeonColour();
         }
 
         public override void onUpdate()

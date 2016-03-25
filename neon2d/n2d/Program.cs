@@ -46,6 +46,20 @@ namespace n2d
             {
                 particles.addParticle(particleProp);
             }
+
+            Colour magneta = new Colour(0, 255, 255, 255);
+
+            Colour transparentWhite = new Colour(0x00FFFFFF);
+
+            Colour argbTest = new Colour(255, 255, 255, 255);
+
+            Console.WriteLine(magneta);
+
+            Brush brush = magneta.toSysBrush();
+
+            Color systemDrawingColor = magneta.toSysColor();
+
+            Colour neonColourTest = systemDrawingColor.toNeonColour();
         }
 
         public override void onUpdate()

@@ -111,7 +111,6 @@ namespace neon2d
                     {
                         killParticle(placeholder);
                     }
-                    Console.WriteLine(particleCt);
                 }
             }
         }

@@ -5,6 +5,9 @@ A simple c# game engine
 )](https://ci.appveyor.com/project/matthewd673/neon2d)
 [![Stories in Ready](https://badge.waffle.io/neon2d/neon2d.svg?label=ready&title=Ready)](http://waffle.io/neon2d/neon2d)
 
+## Big changes ahead!
+neonGL is the next step for the neon2d engine. It will allow us to render without all the extra bloat of using Windows Forms. If your into that kind of thing check out [the info page](https://neon2d.github.io/neonGL) or check out [the repository itself](https://github.com/neon2d/neon2d) which is still in the early stages of development
+
 ## Building neon through AppVeyor
 The latest commit of neon2d is built automatically through AppVeyor at https://ci.appveyor.com/project/matthewd673/neon2d. This is our primary method for finding problems after building (errors with other environments).
 

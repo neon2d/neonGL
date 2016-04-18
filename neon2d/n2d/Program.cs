@@ -38,6 +38,8 @@ namespace n2d
             // Vecto2i's
             Console.WriteLine(new Vector2i(10, 20) - new Vector2i(5, 10));
 
+            Console.WriteLine(new Vector2f(10, 10).magnitude());
+
             //particles
             particles = new ParticleSystem(7, 0, 7, 0, 10);
             particles.setFluctuation(2);

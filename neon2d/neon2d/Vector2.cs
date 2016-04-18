@@ -36,6 +36,26 @@
         }
 
         /// <summary>
+        /// Calculates the magnitude of this vector and returns the length that has already been square rooted.
+        /// </summary>
+        /// <returns>The magnitude of this vector.</returns>
+        public float magnitude()
+        {
+            float len = (x * x) + (y * y);
+            return (float)System.Math.Sqrt(len);
+        }
+
+        /// <summary>
+        /// Calculates the magnitude of this vector and returns the magnitude that has not been square rooted.
+        /// </summary>
+        /// <returns></returns>
+        public float magnitudeSquared()
+        {
+            float len = (x * x) + (y * y);
+            return len;
+        }
+
+        /// <summary>
         /// Calcuates the sum of this Vector2i object and the right hand vector.
         /// </summary>
         /// <param name="vector">The right hand vector.</param>
@@ -135,6 +155,26 @@
         {
             this.x = 0f;
             this.y = 0f;
+        }
+
+        /// <summary>
+        /// Calculates the magnitude of this vector and returns the length that has already been square rooted.
+        /// </summary>
+        /// <returns>The magnitude of this vector.</returns>
+        public float magnitude()
+        {
+            float len = (x * x) + (y * y);
+            return (float)System.Math.Sqrt(len);
+        }
+
+        /// <summary>
+        /// Calculates the magnitude of this vector and returns the magnitude that has not been square rooted.
+        /// </summary>
+        /// <returns></returns>
+        public float magnitudeSquared()
+        {
+            float len = (x * x) + (y * y);
+            return len;
         }
 
         /// <summary>

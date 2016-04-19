@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace neon2d.Math
 {
-
     public struct Vector2
     {
         int _x;

@@ -131,6 +131,50 @@
         {
             return this.x + ", " + this.y;
         }
+
+        /// <summary>
+        /// Calculates the sum of vectors a and b.
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector</param>
+        /// <returns>The sum of vectors a and b</returns>
+        public static Vector2i add(Vector2i a, Vector2i b)
+        {
+            return a.add(b);
+        }
+
+        /// <summary>
+        /// Calculates the difference between vectors a and b.
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector.</param>
+        /// <returns>The difference between vectors a and b.</returns>
+        public static Vector2i subtract(Vector2i a, Vector2i b)
+        {
+            return a.subtract(b);
+        }
+
+        /// <summary>
+        /// Calculates the product of vectors a and b.
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector.</param>
+        /// <returns>The product between vectors a and b.</returns>
+        public static Vector2i multiply(Vector2i a, Vector2i b)
+        {
+            return a.multiply(b);
+        }
+
+        /// <summary>
+        /// Calculates the quotient of vectors a and b. 
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector.</param>
+        /// <returns>The quotient of vector a and b.</returns>
+        public static Vector2i divide(Vector2i a, Vector2i b)
+        {
+            return a.divide(b);
+        }
     }
 
     /// <summary>
@@ -165,6 +209,13 @@
         {
             float len = (x * x) + (y * y);
             return (float)System.Math.Sqrt(len);
+        }
+
+        public void normalize()
+        {
+            float len = magnitude();
+            x = (x / len);
+            y = (y / len);
         }
 
         /// <summary>
@@ -263,6 +314,79 @@
         public override string ToString()
         {
             return x + ", " + y;
+        }
+
+        /// <summary>
+        /// Calculates the sum of vectors a and b.
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector</param>
+        /// <returns>The sum of vectors a and b</returns>
+        public static Vector2f add(Vector2f a, Vector2f b)
+        {
+            return a.add(b);
+        }
+
+        /// <summary>
+        /// Calculates the difference between vectors a and b.
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector.</param>
+        /// <returns>The difference between vectors a and b.</returns>
+        public static Vector2f subtract(Vector2f a, Vector2f b)
+        {
+            return a.subtract(b);
+        }
+
+        /// <summary>
+        /// Calculates the product of vectors a and b.
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector.</param>
+        /// <returns>The product between vectors a and b.</returns>
+        public static Vector2f multiply(Vector2f a, Vector2f b)
+        {
+            return a.multiply(b);
+        }
+
+        /// <summary>
+        /// Calculates the quotient of vectors a and b. 
+        /// </summary>
+        /// <param name="a">The left hand vector.</param>
+        /// <param name="b">The right hand vector.</param>
+        /// <returns>The quotient of vector a and b.</returns>
+        public static Vector2f divide(Vector2f a, Vector2f b)
+        {
+            return a.divide(b);
+        }
+
+        /// <summary>
+        /// Normalizes the given vector.
+        /// </summary>
+        /// <param name="vector">The vector to be normalized.</param>
+        public static void normalize(Vector2f vector)
+        {
+            vector.normalize();
+        }
+
+        /// <summary>
+        /// Calculates the magnitude of the given vector. (The magnitude has been square rooted).
+        /// </summary>
+        /// <param name="vector">The vector to calculate the magnitude of.</param>
+        /// <returns>Float. The magnitude of given vector.</returns>
+        public static float getMagnitude(Vector2f vector)
+        {
+            return vector.magnitude();
+        }
+
+        /// <summary>
+        /// Calculates the magnitude of the given vector, squared. (The magnitude has not been square rooted).
+        /// </summary>
+        /// <param name="vector">The vector to calculate the magnitude (squared) of.</param>
+        /// <returns>Float. The magnitude of the given vector.</returns>
+        public static float getMagnitudeSquared(Vector2f vector)
+        {
+            return vector.magnitudeSquared();
         }
     }
 }

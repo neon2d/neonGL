@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
 using System.Media;
 using System.Drawing;
+
+using OpenTK;
+using OpenTK.Input;
 
 namespace neon2d
 {
@@ -20,9 +21,9 @@ namespace neon2d
         public Bitmap backgroundimg = null;
         public bool backgroundtiling = true;
 
-        public Form ownerwindow;
+        public GameWindow ownerwindow;
 
-        public Keys downkey;
+        public Key downkey;
         public bool keytrue;
         public bool keyuptrue;
 
@@ -36,13 +37,17 @@ namespace neon2d
         public Scene(Window owner)
         {
             ownerwindow = owner.gamewindow;
-            ownerwindow.KeyDown += Gamewindow_KeyDown;
-            ownerwindow.KeyUp += Ownerwindow_KeyUp;
+            ownerwindow.UpdateFrame += gameWindowUpdate;
             ownerwindow.MouseMove += Ownerwindow_MouseMove;
-            ownerwindow.Click += Ownerwindow_Click;
+            //ownerwindow.Click += Ownerwindow_Click;
             ownerwindow.MouseDown += Ownerwindow_MouseDown;
-            ownerwindow.DoubleClick += Ownerwindow_DoubleClick;
+            //ownerwindow.DoubleClick += Ownerwindow_DoubleClick;
             ownerwindow.MouseUp += Ownerwindow_MouseUp;
+        }
+
+        private void gameWindowUpdate(object sender, FrameEventArgs e)
+        {
+
         }
 
         private void Ownerwindow_MouseDown(object sender, MouseEventArgs e)
@@ -74,6 +79,7 @@ namespace neon2d
             mousey = e.Y;
         }
 
+        /*
         private void Ownerwindow_KeyUp(object sender, KeyEventArgs e)
         {
             keyuptrue = true;
@@ -84,6 +90,7 @@ namespace neon2d
             keyuptrue = false;
             downkey = e.KeyCode;
         }
+        */
 
         public struct SpriteStruct
         {
@@ -314,7 +321,7 @@ namespace neon2d
             renderct++;
         }
 
-        public bool readKeyDown(Keys keyToDetect)
+        public bool readKeyDown(Key keyToDetect)
         {
             if(downkey == keyToDetect)
             {

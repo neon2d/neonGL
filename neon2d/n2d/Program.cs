@@ -120,7 +120,9 @@ namespace n2d
 
         public void checkInput()
         {
-            if(scene.readKeyDown(Keys.Up))
+            //this is broken
+            /*
+            if(scene.readKeyDown(Keys.Up)
             {
                 movingup = true;
             }
@@ -129,6 +131,7 @@ namespace n2d
             {
                 movingup = false;
             }
+            */
         }
 
         public static void Main(string [] args)

@@ -9,6 +9,9 @@ using System.Timers;
 using System.Threading;
 using System.Reflection;
 
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
+
 namespace neon2d
 {
 
@@ -29,17 +32,15 @@ namespace neon2d
         public bool threadRunning = false;
         public bool shouldRender = false;
 
-        public Game(Window mainwindow, Scene mainscene, Action onUpdate, int framerate = 30)
+        public Game(Window mainwindow, Scene mainscene, Action onUpdate, int framerate = 60)
         {
             window = mainwindow;
             scene = mainscene;
             fps = framerate;
-            
-            window.gamewindow.Focus();
-            window.gamewindow.Paint += new System.Windows.Forms.PaintEventHandler(this.window_Paint);
-            window.gamewindow.Shown += Gamewindow_Shown;
 
-            window.gamewindow.FormClosed += Gamewindow_FormClosed;
+            window.gamewindow.RenderFrame += renderGameWindow;
+
+            window.gamewindow.Closed += closeGameWindow;
 
             refreshtimer = new System.Timers.Timer(1000 / framerate);
             refreshtimer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
@@ -49,20 +50,16 @@ namespace neon2d
 
         }
 
-        private void Gamewindow_Shown(object sender, EventArgs e)
+        private void renderGameWindow(object sender, FrameEventArgs e)
         {
-            window.gamewindow.Activate();
-        }
 
-        private void Gamewindow_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
+            //set up stuff
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            window.gamewindow.SwapBuffers();
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
-        public void window_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
 
+            /*
             if (scene.backgroundimg != null)
             {
                 if (scene.backgroundtiling)
@@ -77,30 +74,29 @@ namespace neon2d
                 }
             }
 
-            for(int i = 0; i <= scene.renderlist.Count - 1; i++)
+            for (int i = 0; i <= scene.renderlist.Count - 1; i++)
             {
-                if(scene.renderlist[i].GetType() == typeof(Scene.SpriteStruct))
+                if (scene.renderlist[i].GetType() == typeof(Scene.SpriteStruct))
                 {
                     //its a sprite
-                    Scene.SpriteStruct placeholder = (Scene.SpriteStruct) scene.renderlist[i];
-                        
+                    Scene.SpriteStruct placeholder = (Scene.SpriteStruct)scene.renderlist[i];
+
                     g.DrawImage(placeholder.s.currentFrame, new Rectangle(placeholder.x, placeholder.y, placeholder.s.spriteWidth, placeholder.s.spriteHeight));
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.PropStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.PropStruct))
                 {
                     //its a prop
                     Scene.PropStruct placeholder = (Scene.PropStruct)scene.renderlist[i];
-
                     g.DrawImage(placeholder.p.propSource, new Rectangle(placeholder.x, placeholder.y, placeholder.p.propWidth, placeholder.p.propHeight));
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.TextStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.TextStruct))
                 {
                     //its text
                     Scene.TextStruct placeholder = (Scene.TextStruct)scene.renderlist[i];
 
                     g.DrawString(placeholder.stringtext, placeholder.stringfont, placeholder.stringcolor, placeholder._x, placeholder._y);
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.LineStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.LineStruct))
                 {
                     //its a line
                     Scene.LineStruct placeholder = (Scene.LineStruct)scene.renderlist[i];
@@ -108,21 +104,21 @@ namespace neon2d
                     g.DrawLine(placeholder.p, new Point(placeholder.line.lX1, placeholder.line.lY1), new Point(placeholder.line.lX2, placeholder.line.lY2));
 
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.RectStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.RectStruct))
                 {
                     //its a rect
                     Scene.RectStruct placeholder = (Scene.RectStruct)scene.renderlist[i];
 
                     g.DrawRectangle(placeholder.p, placeholder.rect.rectX, placeholder.rect.rectY, placeholder.rect.rectWidth, placeholder.rect.rectHeight);
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.EllipsStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.EllipsStruct))
                 {
                     //its an ellipse
                     Scene.EllipsStruct placeholder = (Scene.EllipsStruct)scene.renderlist[i];
 
                     g.DrawEllipse(placeholder.p, placeholder.ell.ellipsX, placeholder.ell.ellipsY, placeholder.ell.ellipsWidth, placeholder.ell.ellipsHeight);
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.TriStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.TriStruct))
                 {
                     //its a triangle
                     Scene.TriStruct placeholder = (Scene.TriStruct)scene.renderlist[i];
@@ -131,24 +127,25 @@ namespace neon2d
                     g.DrawLine(placeholder.p, new Point(placeholder.tri.triX + (int)(placeholder.tri.triWidth / 2), placeholder.tri.triY), new Point(placeholder.tri.triX + placeholder.tri.triWidth, placeholder.tri.triY + placeholder.tri.triHeight));
                     g.DrawLine(placeholder.p, new Point(placeholder.tri.triX, placeholder.tri.triY + placeholder.tri.triHeight), new Point(placeholder.tri.triX + placeholder.tri.triWidth, placeholder.tri.triY + placeholder.tri.triHeight));
                 }
-                else if(scene.renderlist[i].GetType() == typeof(Scene.ParticleRenderStruct))
+                else if (scene.renderlist[i].GetType() == typeof(Scene.ParticleRenderStruct))
                 {
                     //its a particle system
                     Scene.ParticleRenderStruct renderholder = (Scene.ParticleRenderStruct)scene.renderlist[i];
                     ParticleSystem placeholder = (ParticleSystem)renderholder.ps;
 
-                    for(int j = 0; j <= placeholder.particles.Count - 1; j++)
+                    for (int j = 0; j <= placeholder.particles.Count - 1; j++)
                     {
-                            
-                        if(placeholder.particles[j] != null)
+
+                        if (placeholder.particles[j] != null)
                         {
                             //safe to render
                             ParticleSystem.ParticleStruct particle = (ParticleSystem.ParticleStruct)placeholder.particles[j];
-                            if(particle.particleSource.GetType() == typeof(Prop))
+                            if (particle.particleSource.GetType() == typeof(Prop))
                             {
                                 Prop particleprop = (Prop)particle.particleSource;
-                                g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);}
-                            if(particle.particleSource.GetType() == typeof(Sprite))
+                                g.DrawImage(particleprop.propSource, renderholder.x + particle.x, renderholder.y + particle.y);
+                            }
+                            if (particle.particleSource.GetType() == typeof(Sprite))
                             {
                                 Sprite particlesprite = (Sprite)particle.particleSource;
                                 g.DrawImage(particlesprite.currentFrame, renderholder.x + particle.x, renderholder.y + particle.y);
@@ -161,8 +158,19 @@ namespace neon2d
                         }
                     }
                 }
-                    
+
             }
+            */
+        }
+
+        private void closeGameWindow(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        public void window_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
         }
 
         public void timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -179,11 +187,13 @@ namespace neon2d
 
         public void runGame()
         {
-            Thread windowthread = new Thread(windowRender);
+            //Thread windowthread = new Thread(windowRender);
             threadRunning = true;
-            windowthread.Start();
+            //windowthread.Start();
+            window.gamewindow.Run();
         }
 
+        /*
         public void windowRender()
         {
             if(!windowOpened)
@@ -198,11 +208,12 @@ namespace neon2d
                 Application.DoEvents();
                 if(shouldRender)
                 {
-                    window.gamewindow.Refresh();
+                    window.gamewindow.Upd();
                     shouldRender = false;
                 }
             }
         }
+        */
 
     }
 }
